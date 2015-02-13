@@ -1,0 +1,36 @@
+<?php $this->declareVars('imagesHeight') ?>
+<?php $this->imagesHeight = $this->images_height 
+    ? 'style="height:' . (int) $this->images_height . 'px"' 
+    : null ?>
+
+<div class="flexslider" id="flexslider-wrapper">
+    <ul class="slides">
+        <?php foreach($images as $image): ?>
+            <li>
+                <div>
+                    <?php if ($image->url): ?>
+                        <a href="<?php echo $this->escapeHtmlAttr($image->url) ?>">
+                            <img src="<?php echo $this->slideshowImageUrl($image->image) ?>" <?php echo $this->imagesHeight ?> />
+                        </a>
+                    <?php else: ?>
+                        <img src="<?php echo $this->slideshowImageUrl($image->image) ?>" <?php echo $this->imagesHeight ?> />
+                    <?php endif ?>
+                    <?php if ($image->description): ?>
+                        <p class="flex-caption">
+                            <?php echo $this->escapeHtml($image->description) ?>
+                        </p>
+                    <?php endif ?>
+                </div>
+            </li>
+        <?php endforeach ?>
+    </ul>
+</div>
+
+<?php $this->inlineScript()->captureStart() ?>
+    $('#flexslider-wrapper').flexslider({
+        animation: 'slide',
+        slideshow: <?php echo $this->enable_slideshow ? 'true' : 'false' ?>, 
+        animationLoop: true,
+        itemWidth: <?php echo (int) $this->images_width ?>
+    });
+<?php $this->inlineScript()->captureEnd() ?>

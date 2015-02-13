@@ -1,0 +1,196 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Dream CMS \"slideshow\" module\n"
+"POT-Creation-Date: 2013-07-19 11:59+0600\n"
+"PO-Revision-Date: 2015-02-11 14:14+0600\n"
+"Last-Translator: AlexE <alexermashev@gmail.com>\n"
+"Language-Team: \n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Images height"
+msgstr "Images height"
+
+msgid "Images width"
+msgstr "Images width"
+
+msgid "Enable slideshow"
+msgstr "Enable slideshow"
+
+msgid "Animation"
+msgstr "Animation"
+
+msgid "Category"
+msgstr "Category"
+
+msgid "The selected category has been deleted"
+msgstr "The selected category has been deleted"
+
+msgid "Selected categories have been deleted"
+msgstr "Selected categories have been deleted"
+
+msgid "Selected slideshow categories will be deleted. Are you sure?"
+msgstr "Selected slideshow categories will be deleted. Are you sure?"
+
+msgid "Delete the image"
+msgstr "Delete the image"
+
+msgid "Image will be deleted. Are you sure?"
+msgstr "Image will be deleted. Are you sure?"
+
+msgid "The selected image has been deleted"
+msgstr "The selected image has been deleted"
+
+msgid "Selected images have been deleted"
+msgstr "Selected images have been deleted"
+
+msgid "Selected images will be deleted. Are you sure?"
+msgstr "Selected images will be deleted. Are you sure?"
+
+msgid "Image has been edited"
+msgstr "Image has been edited"
+
+msgid "Edit the image"
+msgstr "Edit the image"
+
+msgid "Image has been added"
+msgstr "Image has been added"
+
+msgid "Image uploading failed"
+msgstr "Image uploading failed"
+
+msgid "Image deleting failed"
+msgstr "Image deleting failed"
+
+msgid "New image"
+msgstr "New image"
+
+msgid "Add an image"
+msgstr "Add an image"
+
+msgid "Browse images"
+msgstr "Browse images"
+
+msgid "Category will be deleted. Are you sure?"
+msgstr "Category will be deleted. Are you sure?"
+
+msgid "Delete the category"
+msgstr "Delete the category"
+
+msgid "Edit the category"
+msgstr "Edit the category"
+
+msgid "Category has been edited"
+msgstr "Category has been edited"
+
+msgid "Category already exists"
+msgstr "Category already exists"
+
+msgid "Category has been added"
+msgstr "Category has been added"
+
+msgid "Add a category"
+msgstr "Add a category"
+
+msgid "Category name"
+msgstr "Category name"
+
+msgid "Slideshow categories"
+msgstr "Slideshow categories"
+
+msgid "List of categories"
+msgstr "List of categories"
+
+msgid "Slideshow"
+msgstr "Slideshow"
+
+msgid "Module allows to publish photos slideshow on the site"
+msgstr "Module allows to publish photos slideshow on the site"
+
+msgid "Event - Deleting slideshow categories"
+msgstr "Deleting slideshow categories"
+
+msgid "Event - Slideshow category deleted by guest"
+msgstr "Guest deleted the slideshow category with id - \"%d\""
+
+msgid "Event - Slideshow category deleted by user"
+msgstr "\"%s\" deleted the slideshow category with id - \"%d\""
+
+msgid "Event - Deleting slideshow images"
+msgstr "Deleting slideshow images"
+
+msgid "Event - Slideshow image deleted by guest"
+msgstr "Guest deleted the slideshow image with id - \"%d\""
+
+msgid "Event - Slideshow image deleted by user"
+msgstr "\"%s\" deleted the slideshow image with id - \"%d\""
+
+msgid "Event - Editing slideshow images"
+msgstr "Editing slideshow images"
+
+msgid "Event - Slideshow image edited by guest"
+msgstr "Guest edited the slideshow image with id - \"%d\""
+
+msgid "Event - Slideshow image edited by user"
+msgstr "\"%s\" edited the slideshow image with id - \"%d\""
+
+msgid "Event - Adding slideshow images"
+msgstr "Adding slideshow images"
+
+msgid "Event - Slideshow image added by guest"
+msgstr "Guest added the slideshow image with id - \"%d\""
+
+msgid "Event - Slideshow image added by user"
+msgstr "\"%s\" added the slideshow image with id - \"%d\""
+
+msgid "Event - Editing slideshow categories"
+msgstr "Editing slideshow categories"
+
+msgid "Event - Slideshow category edited by guest"
+msgstr "Guest edited the slideshow category with id - \"%d\""
+
+msgid "Event - Slideshow category edited by user"
+msgstr "\"%s\" edited the slideshow category with id - \"%d\""
+
+msgid "Event - Adding slideshow categories"
+msgstr "Adding slideshow categories"
+
+msgid "Event - Slideshow category added by guest"
+msgstr "Guest added the slideshow category with id - \"%d\""
+
+msgid "Event - Slideshow category added by user"
+msgstr "\"%s\" added the slideshow category with id - \"%d\""
+
+msgid "ACL - Viewing slideshow"
+msgstr "Viewing slideshow"
+
+msgid "ACL - Viewing slideshow categories in admin area"
+msgstr "Viewing slideshow categories in admin area"
+
+msgid "ACL - Adding slideshow categories in admin area"
+msgstr "Adding slideshow categories in admin area"
+
+msgid "ACL - Editing slideshow categories in admin area"
+msgstr "Editing slideshow categories in admin area"
+
+msgid "ACL - Browsing slideshow images in admin area"
+msgstr "Browsing slideshow images in admin area"
+
+msgid "ACL - Adding slideshow images in admin area"
+msgstr "Adding slideshow images in admin area"
+
+msgid "ACL - Editing slideshow images in admin area"
+msgstr "Editing slideshow images in admin area"
+
+msgid "ACL - Deleting slideshow images in admin area"
+msgstr "Deleting slideshow images in admin area"
+
+msgid "ACL - Deleting slideshow categories in admin area"
+msgstr "Deleting slideshow categories in admin area"
