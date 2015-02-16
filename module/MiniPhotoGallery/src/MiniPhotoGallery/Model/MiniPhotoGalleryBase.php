@@ -1,21 +1,21 @@
 <?php
-namespace Slideshow\Model;
+namespace MiniPhotoGallery\Model;
 
-use Slideshow\Exception\SlideshowException;
-use Slideshow\Event\SlideshowEvent;
+use MiniPhotoGallery\Exception\MiniPhotoGalleryException;
+use MiniPhotoGallery\Event\MiniPhotoGalleryEvent;
 use Application\Utility\ApplicationErrorLogger;
 use Application\Model\ApplicationAbstractBase;
 use Application\Utility\ApplicationFileSystem as FileSystemUtility;
 use Zend\Db\ResultSet\ResultSet;
 use Exception;
 
-class SlideshowBase extends ApplicationAbstractBase
+class MiniPhotoGalleryBase extends ApplicationAbstractBase
 {
     /**
      * Images directory
      * @var string
      */
-    protected static $imagesDir = 'slideshow/';
+    protected static $imagesDir = 'miniphotogallery/';
 
     /**
      * Get images directory name
@@ -36,7 +36,7 @@ class SlideshowBase extends ApplicationAbstractBase
     public function getAllCategories($language = null)
     {
         $select = $this->select();
-        $select->from('slideshow_category')
+        $select->from('miniphotogallery_category')
             ->columns([
                 'id',
                 'name',
@@ -63,7 +63,7 @@ class SlideshowBase extends ApplicationAbstractBase
      *      integer id
      *      string name
      *      string language
-    * @throws Slideshow/Exception/SlideshowException
+    * @throws MiniPhotoGallery/Exception/MiniPhotoGalleryException
      * @return boolean|string
      */
     public function deleteCategory(array $categoryInfo)
@@ -71,9 +71,9 @@ class SlideshowBase extends ApplicationAbstractBase
         try {
             $this->adapter->getDriver()->getConnection()->beginTransaction();
 
-         // get all images
-         $select = $this->select();
-           $select->from('slideshow_image')
+            // get all images
+            $select = $this->select();
+            $select->from('miniphotogallery_image')
                ->columns([
                    'image'
                ])
@@ -81,20 +81,20 @@ class SlideshowBase extends ApplicationAbstractBase
                'category_id' => $categoryInfo['id']
             ]);
 
-         $statement = $this->prepareStatementForSqlObject($select);
-           $resultSet = new ResultSet;
-           $resultSet->initialize($statement->execute());
+            $statement = $this->prepareStatementForSqlObject($select);
+            $resultSet = new ResultSet;
+            $resultSet->initialize($statement->execute());
 
-         // delete assigned images
-         foreach ($resultSet as $image) {
-            // delete an image
-            if (true !== ($imageDeleteResult = $this->deleteSlideShowImage($image['image']))) {
-               throw new SlideshowException('Image deleting failed');
+            // delete assigned images
+            foreach ($resultSet as $image) {
+                // delete an image
+                if (true !== ($imageDeleteResult = $this->deleteMiniPhotoGalleryImage($image['image']))) {
+                   throw new MiniPhotoGalleryException('Image deleting failed');
+                }
             }
-         }
 
             $delete = $this->delete()
-                ->from('slideshow_category')
+                ->from('miniphotogallery_category')
                 ->where([
                     'id' => $categoryInfo['id']
                 ]);
@@ -115,7 +115,7 @@ class SlideshowBase extends ApplicationAbstractBase
 
         // fire the delete category event
         if ($result) {
-         SlideshowEvent::fireDeleteCategoryEvent($categoryInfo['id']);
+            MiniPhotoGalleryEvent::fireDeleteCategoryEvent($categoryInfo['id']);
         }
 
         return $result;
@@ -132,7 +132,7 @@ class SlideshowBase extends ApplicationAbstractBase
      *      string image
      *      string url
      *      integer created
-     * @throws Slideshow/Exception/SlideshowException
+     * @throws MiniPhotoGallery/Exception/MiniPhotoGalleryException
      * @return boolean|string
      */
     public function deleteImage(array $imageInfo)
@@ -141,7 +141,7 @@ class SlideshowBase extends ApplicationAbstractBase
             $this->adapter->getDriver()->getConnection()->beginTransaction();
 
             $delete = $this->delete()
-                ->from('slideshow_image')
+                ->from('miniphotogallery_image')
                 ->where([
                     'id' => $imageInfo['id']
                 ]);
@@ -150,9 +150,9 @@ class SlideshowBase extends ApplicationAbstractBase
             $result = $statement->execute();
 
             // delete an image
-         if (true !== ($imageDeleteResult = $this->deleteSlideShowImage($imageInfo['image']))) {
-            throw new SlideshowException('Image deleting failed');
-         }
+            if (true !== ($imageDeleteResult = $this->deleteMiniPhotoGalleryImage($imageInfo['image']))) {
+                throw new MiniPhotoGalleryException('Image deleting failed');
+            }
 
             $this->adapter->getDriver()->getConnection()->commit();
         }
@@ -167,7 +167,7 @@ class SlideshowBase extends ApplicationAbstractBase
 
         // fire the delete image event
         if ($result) {
-         SlideshowEvent::fireDeleteImageEvent($imageInfo['id']);
+            MiniPhotoGalleryEvent::fireDeleteImageEvent($imageInfo['id']);
         }
 
         return $result;
@@ -179,7 +179,7 @@ class SlideshowBase extends ApplicationAbstractBase
      * @param string $imageName
      * @return boolean
      */
-    protected function deleteSlideShowImage($imageName)
+    protected function deleteMiniPhotoGalleryImage($imageName)
     {
         if (true !== ($result = FileSystemUtility::deleteResourceFile($imageName, self::$imagesDir))) {
             return $result;
@@ -198,7 +198,7 @@ class SlideshowBase extends ApplicationAbstractBase
     public function getCategoryInfo($id, $currentLanguage = true)
     {
         $select = $this->select();
-        $select->from('slideshow_category')
+        $select->from('miniphotogallery_category')
             ->columns([
                 'id',
                 'name'
@@ -229,7 +229,7 @@ class SlideshowBase extends ApplicationAbstractBase
     public function getImageInfo($id, $currentLanguage = true)
     {
         $select = $this->select();
-        $select->from(['a' => 'slideshow_image'])
+        $select->from(['a' => 'miniphotogallery_image'])
             ->columns([
                 'id',
                 'name',
@@ -240,7 +240,7 @@ class SlideshowBase extends ApplicationAbstractBase
                 'created',
             ])
             ->join(
-                ['b' => 'slideshow_category'],
+                ['b' => 'miniphotogallery_category'],
                 'a.category_id = b.id',
                 [
                     'category_name' => 'name'

@@ -1,16 +1,16 @@
 <?php
-namespace Slideshow\Form;
+namespace MiniPhotoGallery\Form;
 
 use Application\Form\ApplicationCustomFormBuilder;
 use Application\Form\ApplicationAbstractCustomForm;
 
-class SlideshowCategoryFilter extends ApplicationAbstractCustomForm 
+class MiniPhotoGalleryCategoryFilter extends ApplicationAbstractCustomForm 
 {
     /**
      * Form name
      * @var string
      */
-    protected $formName = 'slideshow-category-filter';
+    protected $formName = 'miniphotogallery-category-filter';
 
     /**
      * Form method

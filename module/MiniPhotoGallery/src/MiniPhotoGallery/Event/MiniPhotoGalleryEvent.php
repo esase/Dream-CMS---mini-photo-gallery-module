@@ -1,40 +1,40 @@
 <?php
-namespace Slideshow\Event;
+namespace MiniPhotoGallery\Event;
 
 use User\Service\UserIdentity as UserIdentityService;
 use Application\Event\ApplicationAbstractEvent;
 
-class SlideshowEvent extends ApplicationAbstractEvent
+class MiniPhotoGalleryEvent extends ApplicationAbstractEvent
 {
     /**
      * Delete category event
      */
-    const DELETE_CATEGORY = 'slideshow_delete_category';
+    const DELETE_CATEGORY = 'miniphotogallery_delete_category';
 
     /**
      * Add category event
      */
-    const ADD_CATEGORY = 'slideshow_add_category';
+    const ADD_CATEGORY = 'miniphotogallery_add_category';
 
     /**
      * Edit category event
      */
-    const EDIT_CATEGORY = 'slideshow_edit_category';
+    const EDIT_CATEGORY = 'miniphotogallery_edit_category';
 
     /**
      * Add image event
      */
-    const ADD_IMAGE = 'slideshow_add_image';
+    const ADD_IMAGE = 'miniphotogallery_add_image';
 
     /**
      * Edit image event
      */
-    const EDIT_IMAGE = 'slideshow_edit_image';
+    const EDIT_IMAGE = 'miniphotogallery_edit_image';
 
     /**
      * Delete image event
      */
-    const DELETE_IMAGE = 'slideshow_delete_image';
+    const DELETE_IMAGE = 'miniphotogallery_delete_image';
 
     /**
      * Fire delete image event
@@ -46,8 +46,8 @@ class SlideshowEvent extends ApplicationAbstractEvent
     {
         // event's description
         $eventDesc = UserIdentityService::isGuest()
-            ? 'Event - Slideshow image deleted by guest'
-            : 'Event - Slideshow image deleted by user';
+            ? 'Event - mini photo gallery image deleted by guest'
+            : 'Event - minip hoto gallery image deleted by user';
 
         $eventDescParams = UserIdentityService::isGuest()
             ? [$imageId]
@@ -67,8 +67,8 @@ class SlideshowEvent extends ApplicationAbstractEvent
     {
         // event's description
         $eventDesc = UserIdentityService::isGuest()
-            ? 'Event - Slideshow image edited by guest'
-            : 'Event - Slideshow image edited by user';
+            ? 'Event - mini photo gallery image edited by guest'
+            : 'Event - mini photo gallery image edited by user';
 
         $eventDescParams = UserIdentityService::isGuest()
             ? [$imageId]
@@ -88,8 +88,8 @@ class SlideshowEvent extends ApplicationAbstractEvent
     {
         // event's description
         $eventDesc = UserIdentityService::isGuest()
-            ? 'Event - Slideshow image added by guest'
-            : 'Event - Slideshow image added by user';
+            ? 'Event - mini photo gallery image added by guest'
+            : 'Event - mini photo gallery image added by user';
 
         $eventDescParams = UserIdentityService::isGuest()
             ? [$imageId]
@@ -109,8 +109,8 @@ class SlideshowEvent extends ApplicationAbstractEvent
     {
         // event's description
         $eventDesc = UserIdentityService::isGuest()
-            ? 'Event - Slideshow category edited by guest'
-            : 'Event - Slideshow category edited by user';
+            ? 'Event - mini photo gallery category edited by guest'
+            : 'Event - mini photo gallery category edited by user';
 
         $eventDescParams = UserIdentityService::isGuest()
             ? [$categoryId]
@@ -130,8 +130,8 @@ class SlideshowEvent extends ApplicationAbstractEvent
     {
         // event's description
         $eventDesc = UserIdentityService::isGuest()
-            ? 'Event - Slideshow category added by guest'
-            : 'Event - Slideshow category added by user';
+            ? 'Event - mini photo gallery category added by guest'
+            : 'Event - mini photo gallery category added by user';
 
         $eventDescParams = UserIdentityService::isGuest()
             ? [$categoryId]
@@ -151,8 +151,8 @@ class SlideshowEvent extends ApplicationAbstractEvent
     {
         // event's description
         $eventDesc = UserIdentityService::isGuest()
-            ? 'Event - Slideshow category deleted by guest'
-            : 'Event - Slideshow category deleted by user';
+            ? 'Event - mini photo gallery category deleted by guest'
+            : 'Event - mini photo gallery category deleted by user';
 
         $eventDescParams = UserIdentityService::isGuest()
             ? [$categoryId]

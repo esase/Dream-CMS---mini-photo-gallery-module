@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream CMS \"slideshow\" module\n"
+"Project-Id-Version: Dream CMS \"mini photo gallery\" module\n"
 "POT-Creation-Date: 2013-07-19 11:59+0600\n"
-"PO-Revision-Date: 2015-02-11 14:14+0600\n"
+"PO-Revision-Date: 2015-02-16 12:39+0600\n"
 "Last-Translator: AlexE <alexermashev@gmail.com>\n"
 "Language-Team: \n"
 "Language: Русский\n"
@@ -22,8 +22,8 @@ msgstr "Высота изображений"
 msgid "Images width"
 msgstr "Ширина изображений"
 
-msgid "Enable slideshow"
-msgstr "Режим слайд-шоу"
+msgid "Enable mini photo gallery"
+msgstr "Включить мини фото галерею"
 
 msgid "Animation"
 msgstr "Анимация"
@@ -37,8 +37,8 @@ msgstr "Выбранная категория была удалена"
 msgid "Selected categories have been deleted"
 msgstr "Выбранные категории были удалены"
 
-msgid "Selected slideshow categories will be deleted. Are you sure?"
-msgstr "Выбранные категории cлайд-шоу будут удалены. Вы уверены?"
+msgid "Selected mini photo gallery categories will be deleted. Are you sure?"
+msgstr "Выбранные категории мини фото галереи будут удалены. Вы уверены?"
 
 msgid "Delete the image"
 msgstr "Удалить изображение"
@@ -103,97 +103,105 @@ msgstr "Добавить категорию"
 msgid "Category name"
 msgstr "Название категории"
 
-msgid "Slideshow categories"
-msgstr "Категории слайд-шоу"
+msgid "Mini photo gallery categories"
+msgstr "Категории мини фото галереи"
 
 msgid "List of categories"
 msgstr "Список категорий"
 
-msgid "Slideshow"
-msgstr "Слайд-шоу"
+msgid "Mini photo gallery"
+msgstr "Мини фото галерея"
 
-msgid "Module allows to publish photos slideshow on the site"
-msgstr "Модуль позволяет публиковать фото слайд-шоу на сайте"
+msgid "Module allows to publish a mini photo gallery on the site"
+msgstr "Модуль позволяет публиковать мини фото галерею на сайте"
 
-msgid "Event - Deleting slideshow categories"
-msgstr "Удаление категорий слайд-шоу"
+msgid "Event - Deleting mini photo gallery categories"
+msgstr "Удаление категорий мини фото галереи"
 
-msgid "Event - Slideshow category deleted by guest"
-msgstr "Гость удалил категорию слайд-шоу с идентификатором - \"%d\""
+msgid "Event - Mini photo gallery category deleted by guest"
+msgstr "Гость удалил категорию мини фото галереи с идентификатором - \"%d\""
 
-msgid "Event - Slideshow category deleted by user"
-msgstr "\"%s\" удалил(а) категорию слайд-шоу с идентификатором - \"%d\""
-
-msgid "Event - Deleting slideshow images"
-msgstr "Удаление изображений слайд-шоу"
-
-msgid "Event - Slideshow image deleted by guest"
-msgstr "Гость удалил изображение слайд-шоу с идентификатором - \"%d\""
-
-msgid "Event - Slideshow image deleted by user"
-msgstr "\"%s\" удалил(а) изображение слайд-шоу с идентификатором - \"%d\""
-
-msgid "Event - Editing slideshow images"
-msgstr "Редактирование изображений слайд-шоу"
-
-msgid "Event - Slideshow image edited by guest"
-msgstr "Гость отредактировал изображение слайд-шоу с идентификатором - \"%d\""
-
-msgid "Event - Slideshow image edited by user"
+msgid "Event - Mini photo gallery category deleted by user"
 msgstr ""
-"\"%s\" отредактировал(а) изображение слайд-шоу с идентификатором - \"%d\""
+"\"%s\" удалил(а) категорию мини фото галереи с идентификатором - \"%d\""
 
-msgid "Event - Adding slideshow images"
-msgstr "Добавление изображений слайд-шоу"
+msgid "Event - Deleting mini photo gallery images"
+msgstr "Удаление изображений мини фото галереи"
 
-msgid "Event - Slideshow image added by guest"
-msgstr "Гость добавил изображение слайд-шоу с идентификатором - \"%d\""
+msgid "Event - Mini photo gallery image deleted by guest"
+msgstr "Гость удалил изображение мини фото галереи с идентификатором - \"%d\""
 
-msgid "Event - Slideshow image added by user"
-msgstr "\"%s\" добавил(а) изображение слайд-шоу с идентификатором - \"%d\""
-
-msgid "Event - Editing slideshow categories"
-msgstr "Редактирование категорий слайд-шоу"
-
-msgid "Event - Slideshow category edited by guest"
-msgstr "Гость отредактировал категорию слайд-шоу с идентификатором - \"%d\""
-
-msgid "Event - Slideshow category edited by user"
+msgid "Event - Mini photo gallery image deleted by user"
 msgstr ""
-"\"%s\" отредактировал(а) категорию слайд-шоу с идентификатором - \"%d\""
+"\"%s\" удалил(а) изображение мини фото галереи с идентификатором - \"%d\""
 
-msgid "Event - Adding slideshow categories"
-msgstr "Добавление категорий слайд-шоу"
+msgid "Event - Editing mini photo gallery images"
+msgstr "Редактирование изображений мини фото галереи"
 
-msgid "Event - Slideshow category added by guest"
-msgstr "Гость добавил категорию слайд-шоу с идентификатором - \"%d\""
+msgid "Event - Mini photo gallery image edited by guest"
+msgstr ""
+"Гость отредактировал изображение мини фото галереи с идентификатором - \"%d\""
 
-msgid "Event - Slideshow category added by user"
-msgstr "\"%s\" добавил(а) категорию слайд-шоу с идентификатором - \"%d\""
+msgid "Event - Mini photo gallery image edited by user"
+msgstr ""
+"\"%s\" отредактировал(а) изображение мини фото галереи с идентификатором - "
+"\"%d\""
 
-msgid "ACL - Viewing slideshow"
-msgstr "Просмотр слайд-шоу"
+msgid "Event - Adding mini photo gallery images"
+msgstr "Добавление изображений мини фото галереи"
 
-msgid "ACL - Viewing slideshow categories in admin area"
-msgstr "Просмотр категорий слайд-шоу в админке"
+msgid "Event - Mini photo gallery image added by guest"
+msgstr "Гость добавил изображение мини фото галереи с идентификатором - \"%d\""
 
-msgid "ACL - Adding slideshow categories in admin area"
-msgstr "Добавление категорий слайд-шоу в админке"
+msgid "Event - Mini photo gallery image added by user"
+msgstr ""
+"\"%s\" добавил(а) изображение мини фото галереи с идентификатором - \"%d\""
 
-msgid "ACL - Editing slideshow categories in admin area"
-msgstr "Редактирование категорий слайд-шоу в админке"
+msgid "Event - Editing mini photo gallery categories"
+msgstr "Редактирование категорий мини фото галереи"
 
-msgid "ACL - Browsing slideshow images in admin area"
-msgstr "Просмотр изображений слайд-шоу в админке"
+msgid "Event - Mini photo gallery category edited by guest"
+msgstr ""
+"Гость отредактировал категорию мини фото галереи с идентификатором - \"%d\""
 
-msgid "ACL - Adding slideshow images in admin area"
-msgstr "Добавление изображений слайд-шоу в админке"
+msgid "Event - Mini photo gallery category edited by user"
+msgstr ""
+"\"%s\" отредактировал(а) категорию мини фото галереи с идентификатором - \"%d"
+"\""
 
-msgid "ACL - Editing slideshow images in admin area"
-msgstr "Редактирование изображение слайд-шоу в админке"
+msgid "Event - Adding mini photo gallery categories"
+msgstr "Добавление категорий мини фото галереи"
 
-msgid "ACL - Deleting slideshow images in admin area"
-msgstr "Удаление изображение слайд-шоу в админке"
+msgid "Event - Mini photo gallery category added by guest"
+msgstr "Гость добавил категорию мини фото галереи с идентификатором - \"%d\""
 
-msgid "ACL - Deleting slideshow categories in admin area"
-msgstr "Удаление категорий слайд-шоу в админке"
+msgid "Event - Mini photo gallery category added by user"
+msgstr ""
+"\"%s\" добавил(а) категорию мини фото галереи с идентификатором - \"%d\""
+
+msgid "ACL - Viewing mini photo gallery"
+msgstr "Просмотр мини фото галереи"
+
+msgid "ACL - Viewing mini photo gallery categories in admin area"
+msgstr "Просмотр категорий мини фото галереи в админке"
+
+msgid "ACL - Adding mini photo gallery categories in admin area"
+msgstr "Добавление категорий мини фото галереи в админке"
+
+msgid "ACL - Editing mini photo gallery categories in admin area"
+msgstr "Редактирование категорий мини фото галереи в админке"
+
+msgid "ACL - Browsing mini photo gallery images in admin area"
+msgstr "Просмотр изображений мини фото галереи в админке"
+
+msgid "ACL - Adding mini photo gallery images in admin area"
+msgstr "Добавление изображений мини фото галереи в админке"
+
+msgid "ACL - Editing mini photo gallery images in admin area"
+msgstr "Редактирование изображений мини фото галереи в админке"
+
+msgid "ACL - Deleting mini photo gallery images in admin area"
+msgstr "Удаление изображений мини фото галереи в админке"
+
+msgid "ACL - Deleting mini photo gallery categories in admin area"
+msgstr "Удаление категорий мини фото галереи в админке"

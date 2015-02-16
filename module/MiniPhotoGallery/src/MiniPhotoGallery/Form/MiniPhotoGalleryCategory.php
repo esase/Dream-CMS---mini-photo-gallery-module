@@ -1,11 +1,11 @@
 <?php
-namespace Slideshow\Form;
+namespace MiniPhotoGallery\Form;
 
 use Application\Form\ApplicationAbstractCustomForm;
 use Application\Form\ApplicationCustomFormBuilder;
-use Slideshow\Model\SlideshowAdministration as SlideshowAdministrationModel;
+use MiniPhotoGallery\Model\MiniPhotoGalleryAdministration as MiniPhotoGalleryAdministrationModel;
 
-class SlideshowCategory extends ApplicationAbstractCustomForm 
+class MiniPhotoGalleryCategory extends ApplicationAbstractCustomForm 
 {
     /**
      * Category name max string length
@@ -16,7 +16,7 @@ class SlideshowCategory extends ApplicationAbstractCustomForm
      * Form name
      * @var string
      */
-    protected $formName = 'slideshow-category';
+    protected $formName = 'miniphotogallery-category';
 
     /**
      * Model instance
@@ -82,7 +82,7 @@ class SlideshowCategory extends ApplicationAbstractCustomForm
      * @param object $model
      * @return object fluent interface
      */
-    public function setModel(SlideshowAdministrationModel $model)
+    public function setModel(MiniPhotoGalleryAdministrationModel $model)
     {
         $this->model = $model;
         return $this;

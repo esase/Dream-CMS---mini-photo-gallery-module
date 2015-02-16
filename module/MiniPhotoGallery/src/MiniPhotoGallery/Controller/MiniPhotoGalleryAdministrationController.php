@@ -1,10 +1,10 @@
 <?php
-namespace Slideshow\Controller;
+namespace MiniPhotoGallery\Controller;
 
 use Application\Controller\ApplicationAbstractAdministrationController;
 use Zend\View\Model\ViewModel;
 
-class SlideshowAdministrationController extends ApplicationAbstractAdministrationController
+class MiniPhotoGalleryAdministrationController extends ApplicationAbstractAdministrationController
 {
     /**
      * Model instance
@@ -20,7 +20,7 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
         if (!$this->model) {
             $this->model = $this->getServiceLocator()
                 ->get('Application\Model\ModelManager')
-                ->getInstance('Slideshow\Model\SlideshowAdministration');
+                ->getInstance('MiniPhotoGallery\Model\MiniPhotoGalleryAdministration');
         }
 
         return $this->model;
@@ -82,11 +82,11 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
         // redirect back
         return $request->isXmlHttpRequest()
             ? $this->getResponse()
-            : $this->redirectTo('slideshow-administration', 'list-categories', [], true);
+            : $this->redirectTo('miniphotogallery-administration', 'list-categories', [], true);
     }
 
     /**
-     * Slideshow categories list 
+     * Categories list 
      */
     public function listCategoriesAction()
     {
@@ -102,7 +102,7 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
         // get a filter form
         $filterForm = $this->getServiceLocator()
             ->get('Application\Form\FormManager')
-            ->getInstance('Slideshow\Form\SlideshowCategoryFilter');
+            ->getInstance('MiniPhotoGallery\Form\MiniPhotoGalleryCategoryFilter');
 
         $request = $this->getRequest();
         $filterForm->getForm()->setData($request->getQuery(), false);
@@ -139,7 +139,7 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
         if (null == ($category = $this->
                 getModel()->getCategoryInfo($this->getSlug()))) {
 
-            return $this->redirectTo('slideshow-administration', 'list-categories');
+            return $this->redirectTo('miniphotogallery-administration', 'list-categories');
         }
 
         // get data
@@ -164,13 +164,13 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
         if (null == ($image = $this->
                 getModel()->getImageInfo($this->getSlug()))) {
 
-            return $this->redirectTo('slideshow-administration', 'list-categories');
+            return $this->redirectTo('miniphotogallery-administration', 'list-categories');
         }
 
         // get an image form
         $imageForm = $this->getServiceLocator()
             ->get('Application\Form\FormManager')
-            ->getInstance('Slideshow\Form\SlideshowImage')
+            ->getInstance('MiniPhotoGallery\Form\MiniPhotoGalleryImage')
             ->setImage($image['image']);
 
         // fill the form with default values
@@ -209,7 +209,7 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
                         ->addMessage($this->getTranslator()->translate($result));
                 }
 
-                return $this->redirectTo('slideshow-administration', 'edit-image', [
+                return $this->redirectTo('miniphotogallery-administration', 'edit-image', [
                     'slug' => $image['id']
                 ]);
             }
@@ -277,7 +277,7 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
         // redirect back
         return $request->isXmlHttpRequest()
             ? $this->getResponse()
-            : $this->redirectTo('slideshow-administration', 'browse-images', [], true);
+            : $this->redirectTo('miniphotogallery-administration', 'browse-images', [], true);
     }
 
     /**
@@ -289,13 +289,13 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
         if (null == ($category = $this->
                 getModel()->getCategoryInfo($this->params()->fromQuery('category', -1)))) {
 
-            return $this->redirectTo('slideshow-administration', 'list-categories');
+            return $this->redirectTo('miniphotogallery-administration', 'list-categories');
         }
 
         // get an image form
         $imageForm = $this->getServiceLocator()
             ->get('Application\Form\FormManager')
-            ->getInstance('Slideshow\Form\SlideshowImage');
+            ->getInstance('MiniPhotoGallery\Form\MiniPhotoGalleryImage');
 
         $request  = $this->getRequest();
 
@@ -331,7 +331,7 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
                         ->addMessage($this->getTranslator()->translate($result));
                 }
 
-                return $this->redirectTo('slideshow-administration', 'add-image', [], false, [
+                return $this->redirectTo('miniphotogallery-administration', 'add-image', [], false, [
                     'category' => $category['id']
                 ]);
             }
@@ -351,7 +351,7 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
         // get a category form
         $categoryForm = $this->getServiceLocator()
             ->get('Application\Form\FormManager')
-            ->getInstance('Slideshow\Form\SlideshowCategory')
+            ->getInstance('MiniPhotoGallery\Form\MiniPhotoGalleryCategory')
             ->setModel($this->getModel());
 
         $request  = $this->getRequest();
@@ -380,7 +380,7 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
                         ->addMessage($this->getTranslator()->translate($result));
                 }
 
-                return $this->redirectTo('slideshow-administration', 'add-category');
+                return $this->redirectTo('miniphotogallery-administration', 'add-category');
             }
         }
 
@@ -398,13 +398,13 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
         if (null == ($category = $this->
                 getModel()->getCategoryInfo($this->getSlug()))) {
 
-            return $this->redirectTo('slideshow-administration', 'list-categories');
+            return $this->redirectTo('miniphotogallery-administration', 'list-categories');
         }
 
         // get the category form
         $categoryForm = $this->getServiceLocator()
             ->get('Application\Form\FormManager')
-            ->getInstance('Slideshow\Form\SlideshowCategory')
+            ->getInstance('MiniPhotoGallery\Form\MiniPhotoGalleryCategory')
             ->setModel($this->getModel())
             ->setCategoryId($category['id']);
 
@@ -438,7 +438,7 @@ class SlideshowAdministrationController extends ApplicationAbstractAdministratio
                         ->addMessage($this->getTranslator()->translate($result));
                 }
 
-                return $this->redirectTo('slideshow-administration', 'edit-category', [
+                return $this->redirectTo('miniphotogallery-administration', 'edit-category', [
                     'slug' => $category['id']
                 ]);
             }

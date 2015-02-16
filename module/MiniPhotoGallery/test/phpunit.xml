@@ -2,8 +2,8 @@
 
 <phpunit bootstrap="Bootstrap.php">
     <testsuites>
-        <testsuite name="Slideshow tests">
-            <directory>Slideshow</directory>
+        <testsuite name="Mini photo gallery tests">
+            <directory>MiniPhotoGallery</directory>
         </testsuite>
     </testsuites>
 </phpunit>

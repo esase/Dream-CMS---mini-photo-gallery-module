@@ -1,12 +1,12 @@
 <?php
-namespace Slideshow\Form;
+namespace MiniPhotoGallery\Form;
 
 use Application\Service\Application as ApplicationService;
 use Application\Form\ApplicationAbstractCustomForm;
 use Application\Form\ApplicationCustomFormBuilder;
-use Slideshow\Model\SlideshowBase as SlideshowBaseModel;
+use MiniPhotoGallery\Model\MiniPhotoGalleryBase as MiniPhotoGalleryBaseModel;
 
-class SlideshowImage extends ApplicationAbstractCustomForm 
+class MiniPhotoGalleryImage extends ApplicationAbstractCustomForm 
 {
     /**
      * Name max string length
@@ -27,7 +27,7 @@ class SlideshowImage extends ApplicationAbstractCustomForm
      * Form name
      * @var string
      */
-    protected $formName = 'slideshow-image';
+    protected $formName = 'miniphotogallery-image';
 
     /**
      * List of ignored elements
@@ -107,7 +107,7 @@ class SlideshowImage extends ApplicationAbstractCustomForm
                 $this->formElements['image']['required'] = false;
                 $this->formElements['image']['extra_options']['preview'] = true;
                 $this->formElements['image']['extra_options']['file_url'] =
-                        ApplicationService::getResourcesUrl() . SlideshowBaseModel::getImagesDir() . $this->image;
+                        ApplicationService::getResourcesUrl() . MiniPhotoGalleryBaseModel::getImagesDir() . $this->image;
             }
 
             $this->form = new ApplicationCustomFormBuilder($this->formName,

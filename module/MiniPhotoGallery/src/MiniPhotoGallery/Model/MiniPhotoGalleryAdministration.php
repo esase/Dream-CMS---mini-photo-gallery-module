@@ -1,8 +1,8 @@
 <?php
-namespace Slideshow\Model;
+namespace MiniPhotoGallery\Model;
 
-use Slideshow\Exception\SlideshowException;
-use Slideshow\Event\SlideshowEvent;
+use MiniPhotoGallery\Exception\MiniPhotoGalleryException;
+use MiniPhotoGallery\Event\MiniPhotoGalleryEvent;
 use Application\Utility\ApplicationFileSystem as FileSystemUtility;
 use Application\Utility\ApplicationErrorLogger;
 use Application\Service\ApplicationSetting as SettingService;
@@ -15,7 +15,7 @@ use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Expression as Expression;
 use Exception;
 
-class SlideshowAdministration extends SlideshowBase
+class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
 {
     /**
      * Edit image
@@ -42,7 +42,7 @@ class SlideshowAdministration extends SlideshowBase
             $this->adapter->getDriver()->getConnection()->beginTransaction();
 
             $update = $this->update()
-                ->table('slideshow_image')
+                ->table('miniphotogallery_image')
                 ->set($formData)
                 ->where([
                     'id' => $imageInfo['id']
@@ -64,7 +64,7 @@ class SlideshowAdministration extends SlideshowBase
         }
 
         // fire the add image event
-        SlideshowEvent::fireEditImageEvent($imageInfo['id']);
+        MiniPhotoGalleryEvent::fireEditImageEvent($imageInfo['id']);
         return true;
     }
 
@@ -85,7 +85,7 @@ class SlideshowAdministration extends SlideshowBase
             $this->adapter->getDriver()->getConnection()->beginTransaction();
 
             $insert = $this->insert()
-                ->into('slideshow_image')
+                ->into('miniphotogallery_image')
                 ->values(array_merge($imageInfo, [
                     'category_id' => $categoryId,
                     'created' => time()
@@ -108,7 +108,7 @@ class SlideshowAdministration extends SlideshowBase
         }
 
         // fire the add image event
-        SlideshowEvent::fireAddImageEvent($insertId);
+        MiniPhotoGalleryEvent::fireAddImageEvent($insertId);
         return true;
     }
 
@@ -123,7 +123,7 @@ class SlideshowAdministration extends SlideshowBase
      *      integer error
      *      integer size
      * @param string $oldImage
-     * @throws Slideshow\Exception\SlideshowException
+     * @throws MiniPhotoGallery\Exception\MiniPhotoGalleryException
      * @return void
      */
     protected function uploadImage($imageId, array $image, $oldImage = null)
@@ -131,8 +131,8 @@ class SlideshowAdministration extends SlideshowBase
         if (!empty($image['name'])) {
             // delete an old image
             if ($oldImage) {
-                if (true !== ($result = $this->deleteSlideShowImage($oldImage))) {
-                    throw new SlideshowException('Image deleting failed');
+                if (true !== ($result = $this->deleteMiniPhotoGalleryImage($oldImage))) {
+                    throw new MiniPhotoGalleryException('Image deleting failed');
                 }
             }
 
@@ -140,11 +140,11 @@ class SlideshowAdministration extends SlideshowBase
             if (false === ($imageName =
                     FileSystemUtility::uploadResourceFile($imageId, $image, self::$imagesDir))) {
 
-                throw new SlideshowException('Image uploading failed');
+                throw new MiniPhotoGalleryException('Image uploading failed');
             }
 
             $update = $this->update()
-                ->table('slideshow_image')
+                ->table('miniphotogallery_image')
                 ->set([
                     'image' => $imageName
                 ])
@@ -171,7 +171,7 @@ class SlideshowAdministration extends SlideshowBase
             $this->adapter->getDriver()->getConnection()->beginTransaction();
 
             $update = $this->update()
-                ->table('slideshow_category')
+                ->table('miniphotogallery_category')
                 ->set($categoryInfo)
                 ->where([
                     'id' => $categoryId,
@@ -191,7 +191,7 @@ class SlideshowAdministration extends SlideshowBase
         }
 
         // fire the edit category event
-        SlideshowEvent::fireEditCategoryEvent($categoryId);
+        MiniPhotoGalleryEvent::fireEditCategoryEvent($categoryId);
         return true;
     }
 
@@ -208,7 +208,7 @@ class SlideshowAdministration extends SlideshowBase
             $this->adapter->getDriver()->getConnection()->beginTransaction();
 
             $insert = $this->insert()
-                ->into('slideshow_category')
+                ->into('miniphotogallery_category')
                 ->values(array_merge($categoryInfo, [
                     'language' => $this->getCurrentLanguage()
                 ]));
@@ -226,8 +226,8 @@ class SlideshowAdministration extends SlideshowBase
             return $e->getMessage();
         }
 
-        // fire the add slideshow category event
-        SlideshowEvent::fireAddCategoryEvent($insertId);
+        // fire the add category event
+        MiniPhotoGalleryEvent::fireAddCategoryEvent($insertId);
         return true;
     }
 
@@ -241,7 +241,7 @@ class SlideshowAdministration extends SlideshowBase
     public function isCategoryFree($categoryName, $categoryId = 0)
     {
         $select = $this->select();
-        $select->from('slideshow_category')
+        $select->from('miniphotogallery_category')
             ->columns([
                 'id'
             ])
@@ -291,13 +291,13 @@ class SlideshowAdministration extends SlideshowBase
             : 'id';
 
         $select = $this->select();
-        $select->from(['a' => 'slideshow_category'])
+        $select->from(['a' => 'miniphotogallery_category'])
             ->columns([
                 'id',
                 'name'
             ])
             ->join(
-                ['b' => 'slideshow_image'],
+                ['b' => 'miniphotogallery_image'],
                 'a.id = b.category_id',
                 [
                     'images' => new Expression('count(b.id)')
@@ -353,7 +353,7 @@ class SlideshowAdministration extends SlideshowBase
             : 'id';
 
         $select = $this->select();
-        $select->from(['a' => 'slideshow_image'])
+        $select->from(['a' => 'miniphotogallery_image'])
             ->columns([
                 'id',
                 'name',

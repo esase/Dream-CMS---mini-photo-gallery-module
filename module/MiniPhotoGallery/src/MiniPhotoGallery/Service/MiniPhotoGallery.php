@@ -1,10 +1,10 @@
 <?php
-namespace Slideshow\Service;
+namespace MiniPhotoGallery\Service;
 
 use Application\Service\ApplicationServiceLocator as ServiceLocatorService;
 use Localization\Service\Localization as LocalizationService;
 
-class Slideshow
+class MiniPhotoGallery
 {
     /**
      * Categories
@@ -22,7 +22,7 @@ class Slideshow
         if (null === self::$categories) {
             $categories = ServiceLocatorService::getServiceLocator()
                 ->get('Application\Model\ModelManager')
-                ->getInstance('Slideshow\Model\SlideshowBase')
+                ->getInstance('MiniPhotoGallery\Model\MiniPhotoGalleryBase')
                 ->getAllCategories(LocalizationService::getCurrentLocalization()['language']);
 
 			// process categories

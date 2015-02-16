@@ -2,7 +2,7 @@
 
 return [
     'modules' => [
-        'Slideshow'
+        'MiniPhotoGallery'
     ],
     'module_listener_options' => [
         'config_glob_paths' => [
