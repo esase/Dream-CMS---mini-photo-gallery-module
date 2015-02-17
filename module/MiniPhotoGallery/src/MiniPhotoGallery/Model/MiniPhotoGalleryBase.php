@@ -262,6 +262,7 @@ class MiniPhotoGalleryBase extends ApplicationAbstractBase
                 'image',
                 'url',
                 'created',
+                'order'
             ])
             ->join(
                 ['b' => 'miniphotogallery_category'],

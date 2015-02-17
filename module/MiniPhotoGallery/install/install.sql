@@ -69,6 +69,20 @@ INSERT INTO `application_setting_value` (`setting_id`, `value`, `language`) VALU
 
 -- system pages and widgets
 
+INSERT INTO `page_widget` (`name`, `module`, `type`, `description`, `duplicate`, `forced_visibility`, `depend_page_id`) VALUES
+('miniPhotoGalleryWidget', @moduleId, 'public', 'Mini photo gallery', 1, NULL, NULL);
+SET @widgetId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `page_widget_setting` (`name`, `widget`, `label`, `type`, `required`, `order`, `category`, `description`, `check`,  `check_message`, `values_provider`) VALUES
+('miniphotogallery_category', @widgetId, 'Category', 'select', NULL, 1, 1, NULL, NULL, NULL, 'return MiniPhotoGallery\\Service\\MiniPhotoGallery::getAllCategories();');
+
+INSERT INTO `page_widget_setting` (`name`, `widget`, `label`, `type`, `required`, `order`, `category`, `description`, `check`,  `check_message`, `values_provider`) VALUES
+('miniphotogallery_per_page', @widgetId, 'Count of photos per page', 'integer', NULL, 2, 1, NULL, 'return intval(''__value__'') > 0;', 'Value should be greater than 0', NULL);
+SET @widgetSettingId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `page_widget_setting_default_value` (`setting_id`, `value`, `language`) VALUES
+(@widgetSettingId, '10', NULL);
+
 -- module tables
 
 CREATE TABLE IF NOT EXISTS `miniphotogallery_category` (
@@ -90,6 +104,7 @@ CREATE TABLE IF NOT EXISTS `miniphotogallery_image` (
     `image` VARCHAR(100) DEFAULT NULL,
     `url` VARCHAR(100) DEFAULT NULL,
     `created` INT(10) UNSIGNED NOT NULL,
+    `order` SMALLINT(5) NOT NULL DEFAULT '0',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`category_id`) REFERENCES `miniphotogallery_category`(`id`)
         ON UPDATE CASCADE

@@ -65,6 +65,7 @@ class Module
     {
         return [
             'invokables' => [
+                'miniPhotoGalleryWidget' => 'MiniPhotoGallery\View\Widget\MiniPhotoGalleryWidget'
             ],
             'factories' => [
             ]

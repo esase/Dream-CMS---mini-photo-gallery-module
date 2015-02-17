@@ -29,11 +29,13 @@ class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
      *      string image
      *      string url
      *      integer created
+     *      integer order
      * @param array $formData
      *      string name
      *      string description
      *      string image
      *      string url
+     *      integer order
      * @param array $image
      * @return boolean|string
      */
@@ -77,6 +79,7 @@ class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
      *      string name
      *      string description
      *      string url
+     *      integer order
      * @param array $image
      * @return boolean|string
      */
@@ -347,7 +350,8 @@ class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
             'id',
             'name',
             'url',
-            'created'
+            'created',
+            'order'
         ];
 
         $orderType = !$orderType || $orderType == 'desc'
@@ -364,6 +368,7 @@ class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
                 'id',
                 'name',
                 'url',
+                'order',
                 'created'
             ])
             ->where([

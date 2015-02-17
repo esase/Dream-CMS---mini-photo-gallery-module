@@ -82,6 +82,14 @@ class MiniPhotoGalleryImage extends ApplicationAbstractCustomForm
             'max_length' => self::URL_MAX_LENGTH,
             'category' => 'Miscellaneous info'
         ],
+        'order' => [
+            'name' => 'order',
+            'type' => ApplicationCustomFormBuilder::FIELD_INTEGER,
+            'label' => 'Order',
+            'required' => true,
+            'value' => 0,
+            'category' => 'Miscellaneous info'
+        ],
         'csrf' => [
             'name' => 'csrf',
             'type' => ApplicationCustomFormBuilder::FIELD_CSRF
