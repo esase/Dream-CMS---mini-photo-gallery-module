@@ -5,7 +5,7 @@ return [
     'version' => '1.0.0',
     'vendor' => 'eSASe',
     'vendor_email' => 'alexermashev@gmail.com',
-    'description' => 'Module allows to publish photos slideshow on the site',
+    'description' => 'Module allows to publish a mini photo gallery on the site',
     'system_requirements' => [
         'php_extensions' => [
         ],
@@ -18,7 +18,7 @@ return [
     'module_depends' => [
     ],
     'clear_caches' => [
-        'setting'       => false,
+        'setting'       => true,
         'time_zone'     => false,
         'admin_menu'    => true,
         'js_cache'      => true,
@@ -31,7 +31,11 @@ return [
     ],
     'resources' => [
         [
-            'dir_name' => 'slideshow',
+            'dir_name' => 'miniphotogallery',
+            'is_public' => true
+        ],
+        [
+            'dir_name' => 'miniphotogallery/thumbnail',
             'is_public' => true
         ]
     ],
@@ -39,5 +43,5 @@ return [
     'install_intro' => null,
     'uninstall_sql' => __DIR__ . '/../install/uninstall.sql',
     'uninstall_intro' => null,
-    'layout_path' => 'slideshow'
+    'layout_path' => 'miniphotogallery'
 ];

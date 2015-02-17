@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Dream CMS \"slideshow\" module\n"
+"Project-Id-Version: Dream CMS \"mini photo gallery\" module\n"
 "POT-Creation-Date: 2013-07-19 11:59+0600\n"
-"PO-Revision-Date: 2015-02-11 14:14+0600\n"
+"PO-Revision-Date: 2015-02-17 11:06+0600\n"
 "Last-Translator: AlexE <alexermashev@gmail.com>\n"
 "Language-Team: \n"
 "Language: English\n"
@@ -15,14 +15,17 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "MiniPhotoGallery"
+msgstr "Mini photo gallery"
+
 msgid "Images height"
 msgstr "Images height"
 
 msgid "Images width"
 msgstr "Images width"
 
-msgid "Enable slideshow"
-msgstr "Enable slideshow"
+msgid "Enable mini photo gallery"
+msgstr "Enable mini photo gallery"
 
 msgid "Animation"
 msgstr "Animation"
@@ -36,8 +39,8 @@ msgstr "The selected category has been deleted"
 msgid "Selected categories have been deleted"
 msgstr "Selected categories have been deleted"
 
-msgid "Selected slideshow categories will be deleted. Are you sure?"
-msgstr "Selected slideshow categories will be deleted. Are you sure?"
+msgid "Selected mini photo gallery categories will be deleted. Are you sure?"
+msgstr "Selected mini photo gallery categories will be deleted. Are you sure?"
 
 msgid "Delete the image"
 msgstr "Delete the image"
@@ -102,95 +105,98 @@ msgstr "Add a category"
 msgid "Category name"
 msgstr "Category name"
 
-msgid "Slideshow categories"
-msgstr "Slideshow categories"
+msgid "Mini photo gallery categories"
+msgstr "Mini photo gallery categories"
 
 msgid "List of categories"
 msgstr "List of categories"
 
-msgid "Slideshow"
-msgstr "Slideshow"
+msgid "Mini photo gallery"
+msgstr "Mini photo gallery"
 
-msgid "Module allows to publish photos slideshow on the site"
-msgstr "Module allows to publish photos slideshow on the site"
+msgid "Module allows to publish a mini photo gallery on the site"
+msgstr "Module allows to publish a mini photo gallery on the site"
 
-msgid "Event - Deleting slideshow categories"
-msgstr "Deleting slideshow categories"
+msgid "Event - Deleting mini photo gallery categories"
+msgstr "Deleting mini photo gallery categories"
 
-msgid "Event - Slideshow category deleted by guest"
-msgstr "Guest deleted the slideshow category with id - \"%d\""
+msgid "Event - Mini photo gallery category deleted by guest"
+msgstr "Guest deleted the mini photo gallery category with id - \"%d\""
 
-msgid "Event - Slideshow category deleted by user"
-msgstr "\"%s\" deleted the slideshow category with id - \"%d\""
+msgid "Event - Mini photo gallery category deleted by user"
+msgstr "\"%s\" deleted the mini photo gallery category with id - \"%d\""
 
-msgid "Event - Deleting slideshow images"
-msgstr "Deleting slideshow images"
+msgid "Event - Deleting mini photo gallery images"
+msgstr "Deleting mini photo gallery images"
 
-msgid "Event - Slideshow image deleted by guest"
-msgstr "Guest deleted the slideshow image with id - \"%d\""
+msgid "Event - Mini photo gallery image deleted by guest"
+msgstr "Guest deleted the mini photo gallery image with id - \"%d\""
 
-msgid "Event - Slideshow image deleted by user"
-msgstr "\"%s\" deleted the slideshow image with id - \"%d\""
+msgid "Event - Mini photo gallery image deleted by user"
+msgstr "\"%s\" deleted the mini photo gallery image with id - \"%d\""
 
-msgid "Event - Editing slideshow images"
-msgstr "Editing slideshow images"
+msgid "Event - Editing mini photo gallery images"
+msgstr "Editing mini photo gallery images"
 
-msgid "Event - Slideshow image edited by guest"
-msgstr "Guest edited the slideshow image with id - \"%d\""
+msgid "Event - Mini photo gallery image edited by guest"
+msgstr "Guest edited the mini photo gallery image with id - \"%d\""
 
-msgid "Event - Slideshow image edited by user"
-msgstr "\"%s\" edited the slideshow image with id - \"%d\""
+msgid "Event - Mini photo gallery image edited by user"
+msgstr "\"%s\" edited the mini photo gallery image with id - \"%d\""
 
-msgid "Event - Adding slideshow images"
-msgstr "Adding slideshow images"
+msgid "Event - Adding mini photo gallery images"
+msgstr "Adding mini photo gallery images"
 
-msgid "Event - Slideshow image added by guest"
-msgstr "Guest added the slideshow image with id - \"%d\""
+msgid "Event - Mini photo gallery image added by guest"
+msgstr "Guest added the mini photo gallery image with id - \"%d\""
 
-msgid "Event - Slideshow image added by user"
-msgstr "\"%s\" added the slideshow image with id - \"%d\""
+msgid "Event - Mini photo gallery image added by user"
+msgstr "\"%s\" added the mini photo gallery image with id - \"%d\""
 
-msgid "Event - Editing slideshow categories"
-msgstr "Editing slideshow categories"
+msgid "Event - Editing mini photo gallery categories"
+msgstr "Editing mini photo gallery categories"
 
-msgid "Event - Slideshow category edited by guest"
-msgstr "Guest edited the slideshow category with id - \"%d\""
+msgid "Event - Mini photo gallery category edited by guest"
+msgstr "Guest edited the mini photo gallery category with id - \"%d\""
 
-msgid "Event - Slideshow category edited by user"
-msgstr "\"%s\" edited the slideshow category with id - \"%d\""
+msgid "Event - Mini photo gallery category edited by user"
+msgstr "\"%s\" edited the mini photo gallery category with id - \"%d\""
 
-msgid "Event - Adding slideshow categories"
-msgstr "Adding slideshow categories"
+msgid "Event - Adding mini photo gallery categories"
+msgstr "Adding mini photo gallery categories"
 
-msgid "Event - Slideshow category added by guest"
-msgstr "Guest added the slideshow category with id - \"%d\""
+msgid "Event - Mini photo gallery category added by guest"
+msgstr "Guest added the mini photo gallery category with id - \"%d\""
 
-msgid "Event - Slideshow category added by user"
-msgstr "\"%s\" added the slideshow category with id - \"%d\""
+msgid "Event - Mini photo gallery category added by user"
+msgstr "\"%s\" added the mini photo gallery category with id - \"%d\""
 
-msgid "ACL - Viewing slideshow"
-msgstr "Viewing slideshow"
+msgid "ACL - Viewing mini photo gallery"
+msgstr "Viewing mini photo gallery"
 
-msgid "ACL - Viewing slideshow categories in admin area"
-msgstr "Viewing slideshow categories in admin area"
+msgid "ACL - Viewing mini photo gallery categories in admin area"
+msgstr "Viewing mini photo gallery categories in admin area"
 
-msgid "ACL - Adding slideshow categories in admin area"
-msgstr "Adding slideshow categories in admin area"
+msgid "ACL - Adding mini photo gallery categories in admin area"
+msgstr "Adding mini photo gallery categories in admin area"
 
-msgid "ACL - Editing slideshow categories in admin area"
-msgstr "Editing slideshow categories in admin area"
+msgid "ACL - Editing mini photo gallery categories in admin area"
+msgstr "Editing mini photo gallery categories in admin area"
 
-msgid "ACL - Browsing slideshow images in admin area"
-msgstr "Browsing slideshow images in admin area"
+msgid "ACL - Browsing mini photo gallery images in admin area"
+msgstr "Browsing mini photo gallery images in admin area"
 
-msgid "ACL - Adding slideshow images in admin area"
-msgstr "Adding slideshow images in admin area"
+msgid "ACL - Adding mini photo gallery images in admin area"
+msgstr "Adding mini photo gallery images in admin area"
 
-msgid "ACL - Editing slideshow images in admin area"
-msgstr "Editing slideshow images in admin area"
+msgid "ACL - Editing mini photo gallery images in admin area"
+msgstr "Editing mini photo gallery images in admin area"
 
-msgid "ACL - Deleting slideshow images in admin area"
-msgstr "Deleting slideshow images in admin area"
+msgid "ACL - Deleting mini photo gallery images in admin area"
+msgstr "Deleting mini photo gallery images in admin area"
 
-msgid "ACL - Deleting slideshow categories in admin area"
-msgstr "Deleting slideshow categories in admin area"
+msgid "ACL - Deleting mini photo gallery categories in admin area"
+msgstr "Deleting mini photo gallery categories in admin area"
+
+msgid "ACL - Editing mini photo gallery settings in admin area"
+msgstr "Editing mini photo gallery settings in admin area"

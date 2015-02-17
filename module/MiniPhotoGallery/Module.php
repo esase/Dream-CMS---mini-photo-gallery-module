@@ -1,8 +1,8 @@
 <?php
-namespace Slideshow;
+namespace MiniPhotoGallery;
 
 use Application\Service\Application as ApplicationService;
-use Slideshow\Model\SlideshowBase as SlideshowBaseModel;
+use MiniPhotoGallery\Model\MiniPhotoGalleryBase as MiniPhotoGalleryBaseModel;
 use Localization\Event\LocalizationEvent;
 use Zend\ModuleManager\ModuleManagerInterface;
 
@@ -15,15 +15,15 @@ class Module
     {
         $eventManager = LocalizationEvent::getEventManager();
         $eventManager->attach(LocalizationEvent::UNINSTALL, function ($e) use ($moduleManager) {
-            $slideshow = $moduleManager->getEvent()->getParam('ServiceManager')
+            $gallery = $moduleManager->getEvent()->getParam('ServiceManager')
                 ->get('Application\Model\ModelManager')
-                ->getInstance('Slideshow\Model\SlideshowBase');
+                ->getInstance('MiniPhotoGallery\Model\MiniPhotoGalleryBase');
 
-            // delete a language dependent slideshow categories
-            if (null != ($categories = $slideshow->getAllCategories($e->getParam('object_id')))) {
+            // delete a language dependent gallery categories
+            if (null != ($categories = $gallery->getAllCategories($e->getParam('object_id')))) {
                 // process categories
                 foreach ($categories as $category) {
-                    $slideshow->deleteCategory((array) $category);
+                    $gallery->deleteCategory((array) $category);
                 }
             }
         });
@@ -65,13 +65,8 @@ class Module
     {
         return [
             'invokables' => [
-                'slideshowWidget' => 'Slideshow\View\Widget\SlideshowWidget'
             ],
             'factories' => [
-                'slideshowImageUrl' => function() {
-                    $imagesDir = ApplicationService::getResourcesUrl() . SlideshowBaseModel::getImagesDir();
-                    return new \Slideshow\View\Helper\SlideshowImageUrl($imagesDir);
-                }
             ]
         ];
     }

@@ -1,2 +1,2 @@
-DROP TABLE IF EXISTS `slideshow_image`;
-DROP TABLE IF EXISTS `slideshow_category`;
+DROP TABLE IF EXISTS `miniphotogallery_image`;
+DROP TABLE IF EXISTS `miniphotogallery_category`;

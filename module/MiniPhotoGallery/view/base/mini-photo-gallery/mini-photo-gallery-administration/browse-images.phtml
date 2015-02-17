@@ -1,0 +1,164 @@
+<?php $this->declareVars('content', 'extraActions', 'subPageTitle', 'parentPageTitle') ?>
+<?php $this->parentPageTitle = $this->translate('List of categories') ?>
+<?php $this->subPageTitle = $this->translate('Browse images') ?>
+
+<?php $this->headTitle($this->subPageTitle) ?>
+<?php $this->headTitle($this->category['name']) ?>
+<?php $this->headTitle($this->parentPageTitle) ?>
+
+<!-- render a header -->
+<?php echo $this->render('mini-photo-gallery/mini-photo-gallery-administration/_header') ?>
+
+<!-- render tabs -->
+<?php echo $this->partial('administration-partial/tab', [
+    'tabs' => $this->baseTabs,
+    'active' => 'list-categories' // selected action is the "list categories"
+]) ?>
+
+<!-- render a breadcrumb -->
+<?php echo $this->partial('administration-partial/breadcrumb', [
+    'pages' => [
+        'list' => [
+            'name' => $this->parentPageTitle,
+            'controller' => 'miniphotogallery-administration',
+            'action' => 'list-categories',
+            'check_acl' => true
+        ],
+        'browse_images' => [
+            'name' => $this->category['name'] . ' - ' . $this->subPageTitle,
+            'controller' => 'miniphotogallery-administration',
+            'action' => 'browse-images',
+            'check_acl' => true
+        ]
+    ]
+]) ?>
+
+<?php $this->extraActions = trim($this->partial('administration-partial/extra-actions', ['pages' => [
+    [
+        'controller' => 'miniphotogallery-administration',
+        'action' => 'edit-category',
+        'params' => [
+            'slug' => $this->category['id']
+        ],
+        'name' => $this->translate('Edit the category'),
+        'check_acl' => true
+    ],
+    [
+        'controller' => 'miniphotogallery-administration',
+        'action' => 'delete-categories',
+        'name' => $this->translate('Delete the category'),
+        'check_acl' => true,
+        'confirm' => $this->translate('Category will be deleted. Are you sure?'),
+        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'categories' : [{$this->category['id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogallery-administration', 'action' => 'list-categories'], ['force_canonical' => true])}'}) }"
+    ],
+    [
+        'controller' => 'miniphotogallery-administration',
+        'action' => 'add-category',
+        'name' => $this->translate('Add a category'),
+        'check_acl' => true
+    ]]
+]))
+?>
+
+<?php $this->content = $this->partial('partial/data-grid', [
+    'controller' => 'miniphotogallery-administration',
+    'action' => 'browse-images',
+    'slug' => $this->category['id'],
+    'order_by' => $this->order_by,
+    'order_type' => $this->order_type,
+    'per_page' => $this->per_page,
+    'default_order' => 'id',
+    'default_order_type' => 'desc',
+    'headers' => [
+        [
+            'title' => $this->translate('ID'),
+            'order_name' => 'id'
+        ],
+        [
+            'title' => $this->translate('Name'),
+            'order_name' => 'name'
+        ],
+        [
+            'title' => $this->translate('Url'),
+            'order_name' => 'url'
+        ],
+        [
+            'title' => $this->translate('Date'),
+            'order_name' => 'created'
+        ]
+    ],
+    'paginator' => $this->paginator,
+    'helpers' => [
+        'created' => 'applicationDate'
+    ],
+    'helpers_options' => [
+    ],
+    'actions' => [
+        'regular_actions' => [
+            [
+                'name' => $this->translate('Add an image'),
+                'controller' => 'miniphotogallery-administration',
+                'action' => 'add-image',
+                'queries' => [
+                    'category' => $this->category['id'],
+                ],
+                'check_acl' => true
+            ]
+        ],
+        'multiple_actions' => [
+            [
+                'name' => $this->translate('Delete selected'),
+                'controller' => 'miniphotogallery-administration',
+                'action' => 'delete-images',
+                'check_acl' => true,
+                'confirm' => $this->translate('Selected images will be deleted. Are you sure?')
+            ]
+        ],
+        'single_actions' => [
+            [
+                'name' => $this->translate('Edit the image'),
+                'controller' => 'miniphotogallery-administration',
+                'action' => 'edit-image',
+                'check_acl' => true,
+                'image' => $this->layoutAsset('icon/edit_action.png', 'image')
+            ],
+        ]
+    ],
+    'actions_options' => [
+        'action_identity' => 'id',
+        'form_name' => 'miniphotogallery-images',
+        'multiple_actions' => [
+            'items_name' => 'images[]'
+        ]
+    ],
+    'actions_extra_check' => [
+    ]
+]) ?>
+
+<!-- notification -->
+<?php echo $this->partial('partial/notification') ?>
+
+<div class="row">
+    <?php if ($this->extraActions): ?>
+        <div class="col-md-4">
+            <?php echo $this->extraActions ?>
+        </div>
+        <div class="col-md-8">
+            <!-- render a data grid -->
+            <?php echo $this->partial('administration-partial/panel', [
+            'notification' => false,
+                'title' => $this->translate('Images'),
+                'body' => $this->content
+            ]) ?>
+        </div>
+    <?php else: ?>
+        <div class="col-md-12">
+            <!-- render a data grid -->
+            <?php echo $this->partial('administration-partial/panel', [
+            'notification' => false,
+                'title' => $this->translate('Images'),
+                'body' => $this->content
+            ]) ?>
+        </div>
+    <?php endif ?>
+</div>
