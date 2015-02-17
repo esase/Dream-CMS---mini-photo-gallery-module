@@ -1,0 +1,109 @@
+<?php $this->declareVars('content', 'extraActions', 'subPageTitle', 'parentPageTitle', 'currentPageTitle') ?>
+
+<?php $this->parentPageTitle = $this->translate('List of categories') ?>
+<?php $this->subPageTitle = $this->translate('Browse images') ?>
+<?php $this->currentPageTitle = $this->translate('Edit the image') ?>
+
+<?php $this->headTitle($this->currentPageTitle) ?>
+<?php $this->headTitle($this->subPageTitle) ?>
+<?php $this->headTitle($this->image['category_name']) ?>
+<?php $this->headTitle($this->parentPageTitle) ?>
+
+<!-- render a header -->
+<?php echo $this->render('mini-photo-gallery/mini-photo-gallery-administration/_header') ?>
+
+<!-- render tabs -->
+<?php echo $this->partial('administration-partial/tab', [
+    'tabs' => $this->baseTabs,
+    'active' => 'list-categories' // selected action is the "list-categories"
+]) ?>
+
+<!-- render a breadcrumb -->
+<?php echo $this->partial('administration-partial/breadcrumb', [
+    'pages' => [
+        'list' => [
+            'name' => $this->parentPageTitle,
+            'controller' => 'miniphotogallery-administration',
+            'action' => 'list-categories',
+            'check_acl' => true
+        ],
+        'browse_images' => [
+            'name' => $this->image['category_name'] . ' - ' . $this->subPageTitle,
+            'controller' => 'miniphotogallery-administration',
+            'action' => 'browse-images',
+            'params' => [
+                'slug' => $this->image['category_id'],
+            ],
+            'check_acl' => true
+        ],
+        'edit_image' => [
+            'name' => $this->currentPageTitle,
+            'controller' => 'miniphotogallery-administration',
+            'action' => 'edit-image',
+            'check_acl' => true
+        ]
+    ]
+]) ?>
+
+<?php $this->extraActions = trim($this->partial('administration-partial/extra-actions', ['pages' => [
+    [
+        'controller' => 'miniphotogallery-administration',
+        'action' => 'delete-images',
+        'name' => $this->translate('Delete the image'),
+        'check_acl' => true,
+        'confirm' => $this->translate('Image will be deleted. Are you sure?'),
+        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'images' : [{$this->image['id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogallery-administration', 'action' => 'browse-images', 'slug' => $this->image['category_id']], ['force_canonical' => true])}'}) }"
+    ],
+    [
+        'controller' => 'miniphotogallery-administration',
+        'action' => 'delete-categories',
+        'name' => $this->translate('Delete the category'),
+        'check_acl' => true,
+        'confirm' => $this->translate('Category will be deleted. Are you sure?'),
+        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'categories' : [{$this->image['category_id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogallery-administration', 'action' => 'list-categories'], ['force_canonical' => true])}'}) }"
+    ],
+    [
+        'controller' => 'miniphotogallery-administration',
+        'action' => 'add-image',
+        'query' => [
+            'category' => $this->image['category_id']
+        ],
+        'name' => $this->translate('Add an image'),
+        'check_acl' => true
+    ],
+    [
+        'controller' => 'miniphotogallery-administration',
+        'action' => 'add-category',
+        'name' => $this->translate('Add a category'),
+        'check_acl' => true
+    ]]
+]))
+?>
+
+<!-- notification -->
+<?php echo $this->partial('partial/notification') ?>
+
+<div class="row">
+    <?php if ($this->extraActions): ?>
+        <div class="col-md-4">
+            <?php echo $this->extraActions ?>
+        </div>
+        <div class="col-md-8">
+            <!-- render a form -->
+            <?php echo $this->partial('administration-partial/panel', [
+                'title' => $this->translate('Editing'),
+                'body' => $this->partial('partial/form', ['form' => $this->image_form]),
+                'notification' => false
+            ]) ?>
+        </div>
+    <?php else: ?>
+        <div class="col-md-12">
+            <!-- render a form -->
+            <?php echo $this->partial('administration-partial/panel', [
+                'title' => $this->translate('Editing'),
+                'body' => $this->partial('partial/form', ['form' => $this->image_form]),
+                'notification' => false
+            ]) ?>
+        </div>
+    <?php endif ?>
+</div>

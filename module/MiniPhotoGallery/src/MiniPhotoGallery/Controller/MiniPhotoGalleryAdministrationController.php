@@ -27,6 +27,16 @@ class MiniPhotoGalleryAdministrationController extends ApplicationAbstractAdmini
     }
 
     /**
+     * Settings
+     */
+    public function settingsAction()
+    {
+        return new ViewModel([
+            'settings_form' => parent::settingsForm('miniphotogallery', 'miniphotogallery-administration', 'settings')
+        ]);
+    }
+
+    /**
      * Delete selected categories
      */
     public function deleteCategoriesAction()

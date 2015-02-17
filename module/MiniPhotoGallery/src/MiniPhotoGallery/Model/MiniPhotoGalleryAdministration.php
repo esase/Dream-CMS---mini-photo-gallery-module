@@ -1,6 +1,7 @@
 <?php
 namespace MiniPhotoGallery\Model;
 
+use Application\Utility\ApplicationImage as ImageUtility;
 use MiniPhotoGallery\Exception\MiniPhotoGalleryException;
 use MiniPhotoGallery\Event\MiniPhotoGalleryEvent;
 use Application\Utility\ApplicationFileSystem as FileSystemUtility;
@@ -142,6 +143,11 @@ class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
 
                 throw new MiniPhotoGalleryException('Image uploading failed');
             }
+
+            // resize the image
+            ImageUtility::resizeResourceImage($imageName, self::$imagesDir,
+                    (int) SettingService::getSetting('miniphotogallery_thumbnail_width'),
+                    (int) SettingService::getSetting('miniphotogallery_thumbnail_height'), self::$thumbnailsDir);
 
             $update = $this->update()
                 ->table('miniphotogallery_image')

@@ -107,7 +107,7 @@ class MiniPhotoGalleryImage extends ApplicationAbstractCustomForm
                 $this->formElements['image']['required'] = false;
                 $this->formElements['image']['extra_options']['preview'] = true;
                 $this->formElements['image']['extra_options']['file_url'] =
-                        ApplicationService::getResourcesUrl() . MiniPhotoGalleryBaseModel::getImagesDir() . $this->image;
+                        ApplicationService::getResourcesUrl() . MiniPhotoGalleryBaseModel::getThumbnailsDir() . $this->image;
             }
 
             $this->form = new ApplicationCustomFormBuilder($this->formName,

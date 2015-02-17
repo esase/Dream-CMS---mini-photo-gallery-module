@@ -18,6 +18,12 @@ class MiniPhotoGalleryBase extends ApplicationAbstractBase
     protected static $imagesDir = 'miniphotogallery/';
 
     /**
+     * Thumbnails directory
+     * @var string
+     */
+    protected static $thumbnailsDir = 'miniphotogallery/thumbnail/';
+
+    /**
      * Get images directory name
      *
      * @return string
@@ -25,6 +31,16 @@ class MiniPhotoGalleryBase extends ApplicationAbstractBase
     public static function getImagesDir()
     {
         return self::$imagesDir;
+    }
+
+    /**
+     * Get thumbnails directory name
+     *
+     * @return string
+     */
+    public static function getThumbnailsDir()
+    {
+        return self::$thumbnailsDir;
     }
 
     /**
@@ -181,8 +197,16 @@ class MiniPhotoGalleryBase extends ApplicationAbstractBase
      */
     protected function deleteMiniPhotoGalleryImage($imageName)
     {
-        if (true !== ($result = FileSystemUtility::deleteResourceFile($imageName, self::$imagesDir))) {
-            return $result;
+        $imageTypes = [
+            self::$thumbnailsDir,
+            self::$imagesDir
+        ];
+
+        // delete images
+        foreach ($imageTypes as $path) {
+            if (true !== ($result = FileSystemUtility::deleteResourceFile($imageName, $path))) {
+                return $result;
+            }
         }
 
         return true; 

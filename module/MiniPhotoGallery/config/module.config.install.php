@@ -18,7 +18,7 @@ return [
     'module_depends' => [
     ],
     'clear_caches' => [
-        'setting'       => false,
+        'setting'       => true,
         'time_zone'     => false,
         'admin_menu'    => true,
         'js_cache'      => true,
@@ -32,6 +32,10 @@ return [
     'resources' => [
         [
             'dir_name' => 'miniphotogallery',
+            'is_public' => true
+        ],
+        [
+            'dir_name' => 'miniphotogallery/thumbnail',
             'is_public' => true
         ]
     ],

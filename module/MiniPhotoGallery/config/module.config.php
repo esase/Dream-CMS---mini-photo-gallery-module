@@ -3,7 +3,7 @@
 return [
     'controllers' => [
         'invokables' => [
-            'slideshow-administration' => 'Slideshow\Controller\SlideshowAdministrationController'
+            'miniphotogallery-administration' => 'MiniPhotoGallery\Controller\MiniPhotoGalleryAdministrationController'
         ]
     ],
     'router' => [

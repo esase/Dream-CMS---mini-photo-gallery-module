@@ -13,7 +13,8 @@ SET @menuCategoryId = (SELECT LAST_INSERT_ID());
 SET @menuPartId = (SELECT `id` FROM `application_admin_menu_part` WHERE `name` = 'Modules');
 
 INSERT INTO `application_admin_menu` (`name`, `controller`, `action`, `module`, `order`, `category`, `part`) VALUES
-('List of categories', 'miniphotogallery-administration', 'list-categories', @moduleId, @maxOrder + 1, @menuCategoryId, @menuPartId);
+('List of categories', 'miniphotogallery-administration', 'list-categories', @moduleId, @maxOrder + 1, @menuCategoryId, @menuPartId),
+('Settings', 'miniphotogallery-administration', 'settings', @moduleId, @maxOrder + 2, @menuCategoryId, @menuPartId);
 
 -- acl resources
 
@@ -25,7 +26,8 @@ INSERT INTO `acl_resource` (`resource`, `description`, `module`) VALUES
 ('miniphotogallery_administration_browse_images', 'ACL - Browsing mini photo gallery images in admin area', @moduleId),
 ('miniphotogallery_administration_add_image', 'ACL - Adding mini photo gallery images in admin area', @moduleId),
 ('miniphotogallery_administration_edit_image', 'ACL - Editing mini photo gallery images in admin area', @moduleId),
-('miniphotogallery_administration_delete_images', 'ACL - Deleting mini photo gallery images in admin area', @moduleId);
+('miniphotogallery_administration_delete_images', 'ACL - Deleting mini photo gallery images in admin area', @moduleId),
+('miniphotogallery_administration_settings', 'ACL - Editing mini photo gallery settings in admin area', @moduleId);
 
 INSERT INTO `acl_resource` (`resource`, `description`, `module`) VALUES
 ('miniphotogallery_view', 'ACL - Viewing mini photo gallery', @moduleId);
@@ -44,6 +46,26 @@ INSERT INTO `application_event` (`name`, `module`, `description`) VALUES
 ('miniphotogallery_add_image', @moduleId, 'Event - Adding mini photo gallery images'),
 ('miniphotogallery_edit_image', @moduleId, 'Event - Editing mini photo gallery images'),
 ('miniphotogallery_delete_image', @moduleId, 'Event - Deleting mini photo gallery images');
+
+-- application settings
+
+INSERT INTO `application_setting_category` (`name`, `module`) VALUES
+('Main settings', @moduleId);
+SET @settingsCategoryId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `application_setting` (`name`, `label`, `description`, `type`, `required`, `order`, `category`, `module`, `language_sensitive`, `values_provider`, `check`, `check_message`) VALUES
+('miniphotogallery_thumbnail_width', 'Thumbnail width', NULL, 'integer', 1, 1, @settingsCategoryId, @moduleId, NULL, NULL, 'return intval(''__value__'') > 0;', 'Value should be greater than 0');
+SET @settingId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `application_setting_value` (`setting_id`, `value`, `language`) VALUES
+(@settingId, '200', NULL);
+
+INSERT INTO `application_setting` (`name`, `label`, `description`, `type`, `required`, `order`, `category`, `module`, `language_sensitive`, `values_provider`, `check`, `check_message`) VALUES
+('miniphotogallery_thumbnail_height', 'Thumbnail height', NULL, 'integer', 1, 2, @settingsCategoryId, @moduleId, NULL, NULL, 'return intval(''__value__'') > 0;', 'Value should be greater than 0');
+SET @settingId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `application_setting_value` (`setting_id`, `value`, `language`) VALUES
+(@settingId, '200', NULL);
 
 -- system pages and widgets
 
