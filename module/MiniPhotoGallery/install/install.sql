@@ -58,16 +58,87 @@ INSERT INTO `application_setting` (`name`, `label`, `description`, `type`, `requ
 SET @settingId = (SELECT LAST_INSERT_ID());
 
 INSERT INTO `application_setting_value` (`setting_id`, `value`, `language`) VALUES
-(@settingId, '200', NULL);
+(@settingId, '384', NULL);
 
 INSERT INTO `application_setting` (`name`, `label`, `description`, `type`, `required`, `order`, `category`, `module`, `language_sensitive`, `values_provider`, `check`, `check_message`) VALUES
 ('miniphotogallery_thumbnail_height', 'Thumbnail height', NULL, 'integer', 1, 2, @settingsCategoryId, @moduleId, NULL, NULL, 'return intval(''__value__'') > 0;', 'Value should be greater than 0');
 SET @settingId = (SELECT LAST_INSERT_ID());
 
 INSERT INTO `application_setting_value` (`setting_id`, `value`, `language`) VALUES
-(@settingId, '200', NULL);
+(@settingId, '384', NULL);
 
 -- system pages and widgets
+
+
+INSERT INTO `page_widget` (`name`, `module`, `type`, `description`, `duplicate`, `forced_visibility`, `depend_page_id`) VALUES
+('miniPhotoGalleryWidget', @moduleId, 'public', 'Mini photo gallery', 1, NULL, NULL);
+SET @widgetId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `page_widget_setting` (`name`, `widget`, `label`, `type`, `required`, `order`, `category`, `description`, `check`,  `check_message`, `values_provider`) VALUES
+('miniphotogallery_category', @widgetId, 'Category', 'select', NULL, 1, 1, NULL, NULL, NULL, 'return MiniPhotoGallery\\Service\\MiniPhotoGallery::getAllCategories();');
+
+INSERT INTO `page_widget_setting_category` (`name`, `module`) VALUES
+('Display options', @moduleId);
+SET @displaySettingCategoryId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `page_widget_setting` (`name`, `widget`, `label`, `type`, `required`, `order`, `category`, `description`, `check`,  `check_message`, `values_provider`) VALUES
+('miniphotogallery_per_page', @widgetId, 'Count of photos per page', 'integer', NULL, 1, @displaySettingCategoryId, NULL, 'return intval(''__value__'') > 0;', 'Value should be greater than 0', NULL);
+SET @widgetSettingId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `page_widget_setting_default_value` (`setting_id`, `value`, `language`) VALUES
+(@widgetSettingId, '10', NULL);
+
+INSERT INTO `page_widget_setting` (`name`, `widget`, `label`, `type`, `required`, `order`, `category`, `description`, `check`,  `check_message`, `values_provider`) VALUES
+('miniphotogallery_thumbs_width_medium', @widgetId, 'Thumbs width for medium devices desktops (<=992px)', 'select', 1, 2, @displaySettingCategoryId, NULL, NULL, NULL, NULL);
+SET @widgetSettingId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `page_widget_setting_default_value` (`setting_id`, `value`, `language`) VALUES
+(@widgetSettingId, 'col-md-3', NULL);
+
+INSERT INTO `page_widget_setting_predefined_value` (`setting_id`, `value`) VALUES
+(@widgetSettingId, 'col-md-3'),
+(@widgetSettingId, 'col-md-4'),
+(@widgetSettingId, 'col-md-6'),
+(@widgetSettingId, 'col-md-12');
+
+INSERT INTO `page_widget_setting` (`name`, `widget`, `label`, `type`, `required`, `order`, `category`, `description`, `check`,  `check_message`, `values_provider`) VALUES
+('miniphotogallery_thumbs_width_small', @widgetId, 'Thumbs width for small devices tablets (<=768px)', 'select', 1, 3, @displaySettingCategoryId, NULL, NULL, NULL, NULL);
+SET @widgetSettingId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `page_widget_setting_default_value` (`setting_id`, `value`, `language`) VALUES
+(@widgetSettingId, 'col-sm-4', NULL);
+
+INSERT INTO `page_widget_setting_predefined_value` (`setting_id`, `value`) VALUES
+(@widgetSettingId, 'col-sm-3'),
+(@widgetSettingId, 'col-sm-4'),
+(@widgetSettingId, 'col-sm-6'),
+(@widgetSettingId, 'col-sm-12');
+
+INSERT INTO `page_widget_setting` (`name`, `widget`, `label`, `type`, `required`, `order`, `category`, `description`, `check`,  `check_message`, `values_provider`) VALUES
+('miniphotogallery_thumbs_width_extra_small', @widgetId, 'Thumbs width for extra small devices phones (<768px)', 'select', 1, 4, @displaySettingCategoryId, NULL, NULL, NULL, NULL);
+SET @widgetSettingId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `page_widget_setting_default_value` (`setting_id`, `value`, `language`) VALUES
+(@widgetSettingId, 'col-xs-6', NULL);
+
+INSERT INTO `page_widget_setting_predefined_value` (`setting_id`, `value`) VALUES
+(@widgetSettingId, 'col-xs-3'),
+(@widgetSettingId, 'col-xs-4'),
+(@widgetSettingId, 'col-xs-6'),
+(@widgetSettingId, 'col-xs-12');
+
+INSERT INTO `page_widget_setting` (`name`, `widget`, `label`, `type`, `required`, `order`, `category`, `description`, `check`,  `check_message`, `values_provider`) VALUES
+('miniphotogallery_title_type', @widgetId, 'Thumbs title type', 'select', 1, 5, @displaySettingCategoryId, NULL, NULL, NULL, NULL);
+SET @widgetSettingId = (SELECT LAST_INSERT_ID());
+
+INSERT INTO `page_widget_setting_default_value` (`setting_id`, `value`, `language`) VALUES
+(@widgetSettingId, 'inside', NULL);
+
+INSERT INTO `page_widget_setting_predefined_value` (`setting_id`, `value`) VALUES
+(@widgetSettingId, 'inside'),
+(@widgetSettingId, 'float'),
+(@widgetSettingId, 'outside'),
+(@widgetSettingId, 'over');
 
 -- module tables
 
@@ -88,8 +159,8 @@ CREATE TABLE IF NOT EXISTS `miniphotogallery_image` (
     `description` VARCHAR(255) DEFAULT NULL,
     `category_id` INT(11) UNSIGNED NOT NULL,
     `image` VARCHAR(100) DEFAULT NULL,
-    `url` VARCHAR(100) DEFAULT NULL,
     `created` INT(10) UNSIGNED NOT NULL,
+    `order` SMALLINT(5) NOT NULL DEFAULT '0',
     PRIMARY KEY (`id`),
     FOREIGN KEY (`category_id`) REFERENCES `miniphotogallery_category`(`id`)
         ON UPDATE CASCADE

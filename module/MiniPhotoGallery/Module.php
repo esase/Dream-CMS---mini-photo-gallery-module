@@ -65,8 +65,15 @@ class Module
     {
         return [
             'invokables' => [
+                'miniPhotoGalleryWidget' => 'MiniPhotoGallery\View\Widget\MiniPhotoGalleryWidget'
             ],
             'factories' => [
+                'miniPhotoGalleryImageUrl' => function(){
+                    $thumbDir  = ApplicationService::getResourcesUrl() . MiniPhotoGalleryBaseModel::getThumbnailsDir();
+                    $imageDir = ApplicationService::getResourcesUrl() . MiniPhotoGalleryBaseModel::getImagesDir();
+
+                    return new \MiniPhotoGallery\View\Helper\MiniPhotoGalleryImageUrl($thumbDir, $imageDir);
+                }
             ]
         ];
     }

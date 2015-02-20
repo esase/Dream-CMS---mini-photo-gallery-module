@@ -2,6 +2,11 @@
 
 return [
     'modules' => [
+        'Application',
+        'Acl',
+        'User',
+        'Layout',
+        'Localization',
         'MiniPhotoGallery'
     ],
     'module_listener_options' => [
