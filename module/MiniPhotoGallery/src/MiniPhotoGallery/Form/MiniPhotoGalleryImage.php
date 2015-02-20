@@ -19,11 +19,6 @@ class MiniPhotoGalleryImage extends ApplicationAbstractCustomForm
     const DESCRIPTION_MAX_LENGTH = 255;
 
     /**
-     * Url max string length
-     */
-    const URL_MAX_LENGTH = 100;
-
-    /**
      * Form name
      * @var string
      */
@@ -72,14 +67,6 @@ class MiniPhotoGalleryImage extends ApplicationAbstractCustomForm
             'label' => 'Description',
             'required' => false,
             'max_length' => self::DESCRIPTION_MAX_LENGTH,
-            'category' => 'Miscellaneous info'
-        ],
-        'url' => [
-            'name' => 'url',
-            'type' => ApplicationCustomFormBuilder::FIELD_URL,
-            'label' => 'Url',
-            'required' => false,
-            'max_length' => self::URL_MAX_LENGTH,
             'category' => 'Miscellaneous info'
         ],
         'order' => [

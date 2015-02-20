@@ -27,6 +27,25 @@ class MiniPhotoGalleryWidget extends PageAbstractWidget
     }
 
     /**
+     * Include js and css files
+     *
+     * @return void
+     */
+    public function includeJsCssFiles()
+    {
+        $this->getView()->layoutHeadScript()->
+                appendFile($this->getView()->layoutAsset('jquery.fancybox.js', 'js', 'miniphotogallery'));
+
+        $this->getView()->layoutHeadLink()->
+                appendStylesheet($this->getView()->layoutAsset('jquery.fancybox.css', 'css', 'miniphotogallery'));
+
+        if (!$this->getView()->localization()->isCurrentLanguageLtr()) {
+            $this->getView()->layoutHeadLink()->
+                appendStylesheet($this->getView()->layoutAsset('jquery.fancybox.rtl.css', 'css', 'miniphotogallery'));
+        }
+    }
+
+    /**
      * Get widget content
      *
      * @return string|boolean
@@ -56,13 +75,25 @@ class MiniPhotoGalleryWidget extends PageAbstractWidget
                     'paginator_page_query' => $pageParamName,
                     'unit' => 'mini-photo-gallery/partial/_photo-unit',
                     'unit_params' => [
-                    ]
+                        'thumbs_width_medium' => $this->getWidgetSetting('miniphotogallery_thumbs_width_medium'),
+                        'thumbs_width_small' => $this->getWidgetSetting('miniphotogallery_thumbs_width_small'),
+                        'thumbs_width_extra_small' => $this->getWidgetSetting('miniphotogallery_thumbs_width_extra_small')
+                    ],
+                    'uniform_height' => '#' . $galleryWrapperId . ' .thumbnail'
+                ]);
+
+                // add an init script
+                $dataList = $this->getView()->partial('mini-photo-gallery/widget/_photos-list-init', [
+                    'wrapper' => $galleryWrapperId,
+                    'data' => $dataList,
+                    'title_type' => $this->getWidgetSetting('miniphotogallery_title_type')
                 ]);
 
                 if ($this->getRequest()->isXmlHttpRequest()) {
                     return $dataList;
                 }
 
+                // wrap all data
                 return $this->getView()->partial('mini-photo-gallery/widget/photos-list', [
                     'wrapper' => $galleryWrapperId,
                     'data' => $dataList

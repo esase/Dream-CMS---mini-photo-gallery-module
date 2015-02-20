@@ -1,0 +1,17 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+		$("#<?php echo $this->escapeHtmlAttr($this->wrapper) ?>").find('.fancybox').attr('rel', 'media-gallery').fancybox({
+            helpers: {
+                title : {
+                    type : "<?php echo $this->escapeJs($this->title_type) ?>"
+                }
+            },
+            tpl: {
+                closeBtn : '<a title="<?php echo $this->escapeHtmlAttr($this->translate('Close')) ?>" class="fancybox-item fancybox-close" href="javascript:;"></a>',
+				next     : '<a title="<?php echo $this->escapeHtmlAttr($this->translate('Next')) ?>" class="fancybox-nav fancybox-next" href="javascript:;"><span></span></a>',
+				prev     : '<a title="<?php echo $this->escapeHtmlAttr($this->translate('Previous')) ?>" class="fancybox-nav fancybox-prev" href="javascript:;"><span></span></a>'
+			}
+        });
+	});
+</script>
+<?php echo $this->data ?>

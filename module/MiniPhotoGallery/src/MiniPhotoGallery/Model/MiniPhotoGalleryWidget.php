@@ -24,7 +24,6 @@ class MiniPhotoGalleryWidget extends MiniPhotoGalleryBase
                 'name',
                 'description',
                 'image',
-                'url'
             ])
             ->order('order asc, created desc')
             ->where([

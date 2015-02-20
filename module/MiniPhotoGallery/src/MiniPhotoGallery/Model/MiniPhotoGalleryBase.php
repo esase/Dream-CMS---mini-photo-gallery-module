@@ -146,7 +146,6 @@ class MiniPhotoGalleryBase extends ApplicationAbstractBase
      *      string description
      *      integer category_id
      *      string image
-     *      string url
      *      integer created
      * @throws MiniPhotoGallery/Exception/MiniPhotoGalleryException
      * @return boolean|string
@@ -260,7 +259,6 @@ class MiniPhotoGalleryBase extends ApplicationAbstractBase
                 'description',
                 'category_id',
                 'image',
-                'url',
                 'created',
                 'order'
             ])

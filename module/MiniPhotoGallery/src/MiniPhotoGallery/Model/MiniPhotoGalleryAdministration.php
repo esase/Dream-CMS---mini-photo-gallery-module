@@ -27,14 +27,12 @@ class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
      *      string description
      *      integer category_id
      *      string image
-     *      string url
      *      integer created
      *      integer order
      * @param array $formData
      *      string name
      *      string description
      *      string image
-     *      string url
      *      integer order
      * @param array $image
      * @return boolean|string
@@ -78,7 +76,6 @@ class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
      * @param array $imageInfo
      *      string name
      *      string description
-     *      string url
      *      integer order
      * @param array $image
      * @return boolean|string
@@ -349,7 +346,6 @@ class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
         $orderFields = [
             'id',
             'name',
-            'url',
             'created',
             'order'
         ];
@@ -367,7 +363,6 @@ class MiniPhotoGalleryAdministration extends MiniPhotoGalleryBase
             ->columns([
                 'id',
                 'name',
-                'url',
                 'order',
                 'created'
             ])
