@@ -2,7 +2,6 @@
 namespace MiniPhotoGallery\Model;
 
 use Application\Service\ApplicationSetting as SettingService;
-use Application\Utility\ApplicationPagination as PaginationUtility;
 use Zend\Paginator\Adapter\DbSelect as DbSelectPaginator;
 use Zend\Paginator\Paginator;
 
@@ -16,7 +15,7 @@ class MiniPhotoGalleryWidget extends MiniPhotoGalleryBase
      * @param integer $perPage
      * @return array|object
      */
-    public function getImages($page, $category, $perPage = null)
+    public function getImages($page, $category, $perPage)
     {
         $select = $this->select();
         $select->from('miniphotogallery_image')
@@ -32,7 +31,7 @@ class MiniPhotoGalleryWidget extends MiniPhotoGalleryBase
 
         $paginator = new Paginator(new DbSelectPaginator($select, $this->adapter));
         $paginator->setCurrentPageNumber($page);
-        $paginator->setItemCountPerPage(PaginationUtility::processPerPage($perPage));
+        $paginator->setItemCountPerPage($perPage);
         $paginator->setPageRange(SettingService::getSetting('application_page_range'));
 
         return $paginator;

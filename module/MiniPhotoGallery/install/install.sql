@@ -82,7 +82,7 @@ INSERT INTO `page_widget_setting_category` (`name`, `module`) VALUES
 SET @displaySettingCategoryId = (SELECT LAST_INSERT_ID());
 
 INSERT INTO `page_widget_setting` (`name`, `widget`, `label`, `type`, `required`, `order`, `category`, `description`, `check`,  `check_message`, `values_provider`) VALUES
-('miniphotogallery_per_page', @widgetId, 'Count of photos per page', 'integer', NULL, 1, @displaySettingCategoryId, NULL, 'return intval(''__value__'') > 0;', 'Value should be greater than 0', NULL);
+('miniphotogallery_per_page', @widgetId, 'Count of photos per page', 'integer', 1, 1, @displaySettingCategoryId, NULL, 'return intval(''__value__'') > 0;', 'Value should be greater than 0', NULL);
 SET @widgetSettingId = (SELECT LAST_INSERT_ID());
 
 INSERT INTO `page_widget_setting_default_value` (`setting_id`, `value`, `language`) VALUES
