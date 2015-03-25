@@ -83,7 +83,7 @@ class MiniPhotoGalleryWidget extends PageAbstractWidget
                 ]);
 
                 // add an init script
-                $dataList = $this->getView()->partial('mini-photo-gallery/widget/_photos-list-init', [
+                $content = $this->getView()->partial('mini-photo-gallery/widget/_photos-list-init', [
                     'wrapper' => $galleryWrapperId,
                     'data' => $dataList,
                     'title_type' => $this->getWidgetSetting('miniphotogallery_title_type')
@@ -96,7 +96,7 @@ class MiniPhotoGalleryWidget extends PageAbstractWidget
                 // wrap all data
                 return $this->getView()->partial('mini-photo-gallery/widget/photos-list', [
                     'wrapper' => $galleryWrapperId,
-                    'data' => $dataList
+                    'data' => $content
                 ]);
             }
         }
