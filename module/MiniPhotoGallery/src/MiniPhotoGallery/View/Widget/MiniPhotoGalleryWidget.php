@@ -90,7 +90,7 @@ class MiniPhotoGalleryWidget extends PageAbstractWidget
                 ]);
 
                 if ($this->getRequest()->isXmlHttpRequest()) {
-                    return $dataList;
+                    return $content;
                 }
 
                 // wrap all data
