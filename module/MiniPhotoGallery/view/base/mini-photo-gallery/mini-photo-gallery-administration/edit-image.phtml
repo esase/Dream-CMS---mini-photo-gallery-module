@@ -23,13 +23,13 @@
     'pages' => [
         'list' => [
             'name' => $this->parentPageTitle,
-            'controller' => 'miniphotogallery-administration',
+            'controller' => 'miniphotogalleries-administration',
             'action' => 'list-categories',
             'check_acl' => true
         ],
         'browse_images' => [
             'name' => $this->image['category_name'] . ' - ' . $this->subPageTitle,
-            'controller' => 'miniphotogallery-administration',
+            'controller' => 'miniphotogalleries-administration',
             'action' => 'browse-images',
             'params' => [
                 'slug' => $this->image['category_id'],
@@ -38,7 +38,7 @@
         ],
         'edit_image' => [
             'name' => $this->currentPageTitle,
-            'controller' => 'miniphotogallery-administration',
+            'controller' => 'miniphotogalleries-administration',
             'action' => 'edit-image',
             'check_acl' => true
         ]
@@ -47,23 +47,23 @@
 
 <?php $this->extraActions = trim($this->partial('administration-partial/extra-actions', ['pages' => [
     [
-        'controller' => 'miniphotogallery-administration',
+        'controller' => 'miniphotogalleries-administration',
         'action' => 'delete-images',
         'name' => $this->translate('Delete the image'),
         'check_acl' => true,
         'confirm' => $this->translate('Image will be deleted. Are you sure?'),
-        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'images' : [{$this->image['id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogallery-administration', 'action' => 'browse-images', 'slug' => $this->image['category_id']], ['force_canonical' => true])}'}) }"
+        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'images' : [{$this->image['id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogalleries-administration', 'action' => 'browse-images', 'slug' => $this->image['category_id']], ['force_canonical' => true])}'}) }"
     ],
     [
-        'controller' => 'miniphotogallery-administration',
+        'controller' => 'miniphotogalleries-administration',
         'action' => 'delete-categories',
         'name' => $this->translate('Delete the category'),
         'check_acl' => true,
         'confirm' => $this->translate('Category will be deleted. Are you sure?'),
-        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'categories' : [{$this->image['category_id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogallery-administration', 'action' => 'list-categories'], ['force_canonical' => true])}'}) }"
+        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'categories' : [{$this->image['category_id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogalleries-administration', 'action' => 'list-categories'], ['force_canonical' => true])}'}) }"
     ],
     [
-        'controller' => 'miniphotogallery-administration',
+        'controller' => 'miniphotogalleries-administration',
         'action' => 'add-image',
         'query' => [
             'category' => $this->image['category_id']
@@ -72,7 +72,7 @@
         'check_acl' => true
     ],
     [
-        'controller' => 'miniphotogallery-administration',
+        'controller' => 'miniphotogalleries-administration',
         'action' => 'add-category',
         'name' => $this->translate('Add a category'),
         'check_acl' => true
