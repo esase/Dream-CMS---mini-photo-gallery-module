@@ -38,7 +38,7 @@ class Module
     public function init(ModuleManagerInterface $moduleManager)
     {
         // TODO: Delete it with the delete content service
-        $eventManager = LocalizationEvent::getEventManager();
+       /* $eventManager = LocalizationEvent::getEventManager();
         $eventManager->attach(LocalizationEvent::UNINSTALL, function ($e) use ($moduleManager) {
             $gallery = $moduleManager->getEvent()->getParam('ServiceManager')
                 ->get('Application\Model\ModelManager')
@@ -51,7 +51,7 @@ class Module
                     $gallery->deleteCategory((array) $category);
                 }
             }
-        });
+        });*/
     }
 
     /**

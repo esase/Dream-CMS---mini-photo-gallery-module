@@ -96,6 +96,30 @@ class MiniPhotoGalleryBase extends ApplicationAbstractBase
     }
 
     /**
+     * Get unused categories
+     *
+     * @param integer $limit
+     * @return array
+     */
+    public function getUnusedCategories($limit)
+    {
+        $select = $this->select();
+        $select->from('miniphotogallery_category')
+            ->columns([
+                'id',
+                'name'
+            ])
+            ->limit($limit)
+            ->where->and->isNull('language');
+
+        $statement = $this->prepareStatementForSqlObject($select);
+        $resultSet = new ResultSet;
+        $resultSet->initialize($statement->execute());
+
+        return $resultSet->toArray();
+    }
+
+    /**
      * Delete a category
      *
      * @param array $categoryInfo

@@ -69,7 +69,6 @@ INSERT INTO `application_setting_value` (`setting_id`, `value`, `language`) VALU
 
 -- system pages and widgets
 
-
 INSERT INTO `page_widget` (`name`, `module`, `type`, `description`, `duplicate`, `forced_visibility`, `depend_page_id`) VALUES
 ('miniPhotoGalleryWidget', @moduleId, 'public', 'Mini photo gallery', 1, NULL, NULL);
 SET @widgetId = (SELECT LAST_INSERT_ID());
@@ -140,17 +139,21 @@ INSERT INTO `page_widget_setting_predefined_value` (`setting_id`, `value`) VALUE
 (@widgetSettingId, 'outside'),
 (@widgetSettingId, 'over');
 
+-- delete content service integration
+INSERT INTO `application_delete_content_service` (`path`, `module`) VALUES
+('\\MiniPhotoGallery\\DeleteContentHandler\\MiniPhotoGalleryHandler', @moduleId);
+
 -- module tables
 
 CREATE TABLE IF NOT EXISTS `miniphotogallery_category` (
     `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NOT NULL,
-    `language` CHAR(2) NOT NULL,
+    `language` CHAR(2) DEFAULT NULL,
     PRIMARY KEY (`id`),
     UNIQUE `category` (`name`, `language`),
     FOREIGN KEY (`language`) REFERENCES `localization_list`(`language`)
         ON UPDATE CASCADE
-        ON DELETE CASCADE
+        ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `miniphotogallery_image` (
