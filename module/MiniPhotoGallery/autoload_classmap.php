@@ -34,5 +34,6 @@ return [
     'MiniPhotoGallery\Service\MiniPhotoGallery'                            => __DIR__ . '/src/MiniPhotoGallery/Service/MiniPhotoGallery.php',
     'MiniPhotoGallery\View\Helper\MiniPhotoGalleryImageUrl'                => __DIR__ . '/src/MiniPhotoGallery/View/Helper/MiniPhotoGalleryImageUrl.php',
     'MiniPhotoGallery\View\Widget\MiniPhotoGalleryWidget'                  => __DIR__ . '/src/MiniPhotoGallery/View/Widget/MiniPhotoGalleryWidget.php',
-    'MiniPhotoGallery\Test\MiniPhotoGalleryBootstrap'                      => __DIR__ . '/test/Bootstrap.php'
+    'MiniPhotoGallery\Test\MiniPhotoGalleryBootstrap'                      => __DIR__ . '/test/Bootstrap.php',
+    'MiniPhotoGallery\DeleteContentHandler\MiniPhotoGalleryHandler'        => __DIR__ . '/src/MiniPhotoGallery/DeleteContentHandler/MiniPhotoGalleryHandler.php'
 ];
