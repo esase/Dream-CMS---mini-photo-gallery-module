@@ -1,0 +1,4 @@
+Mini photo gallery 1.0.2, Sep 16, 2015
+====================================
+
+- added a license info into each file;

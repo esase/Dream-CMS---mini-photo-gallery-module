@@ -13,21 +13,21 @@ SET @menuCategoryId = (SELECT LAST_INSERT_ID());
 SET @menuPartId = (SELECT `id` FROM `application_admin_menu_part` WHERE `name` = 'Modules');
 
 INSERT INTO `application_admin_menu` (`name`, `controller`, `action`, `module`, `order`, `category`, `part`) VALUES
-('List of categories', 'miniphotogallery-administration', 'list-categories', @moduleId, @maxOrder + 1, @menuCategoryId, @menuPartId),
-('Settings', 'miniphotogallery-administration', 'settings', @moduleId, @maxOrder + 2, @menuCategoryId, @menuPartId);
+('List of categories', 'miniphotogalleries-administration', 'list-categories', @moduleId, @maxOrder + 1, @menuCategoryId, @menuPartId),
+('Settings', 'miniphotogalleries-administration', 'settings', @moduleId, @maxOrder + 2, @menuCategoryId, @menuPartId);
 
 -- acl resources
 
 INSERT INTO `acl_resource` (`resource`, `description`, `module`) VALUES
-('miniphotogallery_administration_list_categories', 'ACL - Viewing mini photo gallery categories in admin area', @moduleId),
-('miniphotogallery_administration_add_category', 'ACL - Adding mini photo gallery categories in admin area', @moduleId),
-('miniphotogallery_administration_delete_categories', 'ACL - Deleting mini photo gallery categories in admin area', @moduleId),
-('miniphotogallery_administration_edit_category', 'ACL - Editing mini photo gallery categories in admin area', @moduleId),
-('miniphotogallery_administration_browse_images', 'ACL - Browsing mini photo gallery images in admin area', @moduleId),
-('miniphotogallery_administration_add_image', 'ACL - Adding mini photo gallery images in admin area', @moduleId),
-('miniphotogallery_administration_edit_image', 'ACL - Editing mini photo gallery images in admin area', @moduleId),
-('miniphotogallery_administration_delete_images', 'ACL - Deleting mini photo gallery images in admin area', @moduleId),
-('miniphotogallery_administration_settings', 'ACL - Editing mini photo gallery settings in admin area', @moduleId);
+('miniphotogalleries_administration_list_categories', 'ACL - Viewing mini photo gallery categories in admin area', @moduleId),
+('miniphotogalleries_administration_add_category', 'ACL - Adding mini photo gallery categories in admin area', @moduleId),
+('miniphotogalleries_administration_delete_categories', 'ACL - Deleting mini photo gallery categories in admin area', @moduleId),
+('miniphotogalleries_administration_edit_category', 'ACL - Editing mini photo gallery categories in admin area', @moduleId),
+('miniphotogalleries_administration_browse_images', 'ACL - Browsing mini photo gallery images in admin area', @moduleId),
+('miniphotogalleries_administration_add_image', 'ACL - Adding mini photo gallery images in admin area', @moduleId),
+('miniphotogalleries_administration_edit_image', 'ACL - Editing mini photo gallery images in admin area', @moduleId),
+('miniphotogalleries_administration_delete_images', 'ACL - Deleting mini photo gallery images in admin area', @moduleId),
+('miniphotogalleries_administration_settings', 'ACL - Editing mini photo gallery settings in admin area', @moduleId);
 
 INSERT INTO `acl_resource` (`resource`, `description`, `module`) VALUES
 ('miniphotogallery_view', 'ACL - Viewing mini photo gallery', @moduleId);

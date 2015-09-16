@@ -17,13 +17,13 @@
     'pages' => [
         'list' => [
             'name' => $this->translate('List of categories'),
-            'controller' => 'miniphotogallery-administration',
+            'controller' => 'miniphotogalleries-administration',
             'action' => 'list-categories',
             'check_acl' => true
         ],
         'edit_category' => [
             'name' => $this->subPageTitle,
-            'controller' => 'miniphotogallery-administration',
+            'controller' => 'miniphotogalleries-administration',
             'action' => 'edit-category',
             'check_acl' => true
         ]
@@ -32,7 +32,7 @@
 
 <?php $this->extraActions = trim($this->partial('administration-partial/extra-actions', ['pages' => [
     [
-        'controller' => 'miniphotogallery-administration',
+        'controller' => 'miniphotogalleries-administration',
         'action' => 'browse-images',
         'name' => $this->translate('Browse images'),
         'params' => [
@@ -41,15 +41,15 @@
         'check_acl' => true
     ],
     [
-        'controller' => 'miniphotogallery-administration',
+        'controller' => 'miniphotogalleries-administration',
         'action' => 'delete-categories',
         'name' => $this->translate('Delete the category'),
         'check_acl' => true,
         'confirm' => $this->translate('Category will be deleted. Are you sure?'),
-        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'categories' : [{$this->category['id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogallery-administration', 'action' => 'list-categories'], ['force_canonical' => true])}'}) }"
+        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'categories' : [{$this->category['id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogalleries-administration', 'action' => 'list-categories'], ['force_canonical' => true])}'}) }"
     ],
     [
-        'controller' => 'miniphotogallery-administration',
+        'controller' => 'miniphotogalleries-administration',
         'action' => 'add-category',
         'name' => $this->translate('Add a category'),
         'check_acl' => true
