@@ -24,36 +24,9 @@ namespace MiniPhotoGallery;
 
 use Application\Service\Application as ApplicationService;
 use MiniPhotoGallery\Model\MiniPhotoGalleryBase as MiniPhotoGalleryBaseModel;
-use Localization\Event\LocalizationEvent;
-use Zend\ModuleManager\ModuleManagerInterface;
 
 class Module
 {
-    /**
-     * Init
-     *
-     * @param \Zend\ModuleManager\ModuleManagerInterface $moduleManager
-     * @return void
-     */
-    public function init(ModuleManagerInterface $moduleManager)
-    {
-        // TODO: Delete it with the delete content service
-       /* $eventManager = LocalizationEvent::getEventManager();
-        $eventManager->attach(LocalizationEvent::UNINSTALL, function ($e) use ($moduleManager) {
-            $gallery = $moduleManager->getEvent()->getParam('ServiceManager')
-                ->get('Application\Model\ModelManager')
-                ->getInstance('MiniPhotoGallery\Model\MiniPhotoGalleryBase');
-
-            // delete a language dependent gallery categories
-            if (null != ($categories = $gallery->getAllCategories($e->getParam('object_id')))) {
-                // process categories
-                foreach ($categories as $category) {
-                    $gallery->deleteCategory((array) $category);
-                }
-            }
-        });*/
-    }
-
     /**
      * Return auto loader config array
      *
