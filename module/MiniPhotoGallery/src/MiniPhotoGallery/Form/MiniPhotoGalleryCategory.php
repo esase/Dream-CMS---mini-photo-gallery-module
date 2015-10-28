@@ -67,6 +67,10 @@ class MiniPhotoGalleryCategory extends ApplicationAbstractCustomForm
             'required' => true,
             'max_length' => self::CATEGORY_NAME_MAX_LENGTH
         ],
+        'csrf' => [
+            'name' => 'csrf',
+            'type' => ApplicationCustomFormBuilder::FIELD_CSRF
+        ],
         'submit' => [
             'name' => 'submit',
             'type' => ApplicationCustomFormBuilder::FIELD_SUBMIT,

@@ -52,7 +52,7 @@
         'name' => $this->translate('Delete the image'),
         'check_acl' => true,
         'confirm' => $this->translate('Image will be deleted. Are you sure?'),
-        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'images' : [{$this->image['id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogalleries-administration', 'action' => 'browse-images', 'slug' => $this->image['category_id']], ['force_canonical' => true])}'}) }"
+        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'csrf' : '{$this->csrf_token}', 'images' : [{$this->image['id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogalleries-administration', 'action' => 'browse-images', 'slug' => $this->image['category_id']], ['force_canonical' => true])}'}) }"
     ],
     [
         'controller' => 'miniphotogalleries-administration',
@@ -60,7 +60,7 @@
         'name' => $this->translate('Delete the category'),
         'check_acl' => true,
         'confirm' => $this->translate('Category will be deleted. Are you sure?'),
-        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'categories' : [{$this->image['category_id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogalleries-administration', 'action' => 'list-categories'], ['force_canonical' => true])}'}) }"
+        'confirm_callback' => "function(link) { $.post($(link).attr('href'), {'csrf' : '{$this->csrf_token}', 'categories' : [{$this->image['category_id']}]}, function(){location.href='{$this->url('application/page', ['controller' => 'miniphotogalleries-administration', 'action' => 'list-categories'], ['force_canonical' => true])}'}) }"
     ],
     [
         'controller' => 'miniphotogalleries-administration',
