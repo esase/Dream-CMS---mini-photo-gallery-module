@@ -1,5 +1,10 @@
+Mini photo gallery 1.0.3, Oct 28, 2015
+====================================
+
+- security added csrf tokens in all forms and post requests;
+
 Mini photo gallery 1.0.2, Sep 16, 2015
 ====================================
 
-- added functionality for deleting unused categories via the "delete content" service
+- added functionality for deleting unused categories via the "delete content" service;
 - added a license info into each file;
